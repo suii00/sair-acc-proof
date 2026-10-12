@@ -1,0 +1,20 @@
+4 0 known
+4 1 known
+4 2 SOLVED m=2 q=0 j=2 w=YYxyyX moves=25
+4 3 UNSOLVED tried ['YYYxyyyX', 'yxYYYYYYYX', 'YYYYYYYxyyyX', 'YYYxYYX', 'yyyyyxYYX', 'yxyyyX', 'YYYxyyyyyyyyX', 'yxYYX']
+4 4 known
+4 5 known
+4 6 SOLVED m=6 q=1 j=2 w=YYxyX moves=49
+4 7 UNSOLVED tried ['yyyyyyyyyxYYYX', 'YYYxYYYX', 'yxYYYX', 'yyyyyxYYYX', 'YYYYYYYxyyX', 'YYYxyyyyyyyX', 'yxyyX', 'YYYxyyX']
+4 8 known
+4 9 UNSOLVED tried ['yyyyyyyxYYYYYYX', 'yyyyyyyxYX', 'YYYYYxyyyyX', 'YYYYYxYX', 'YxYX', 'yyyxYX', 'yyyxYYYYYYX', 'YxyyyyX']
+4 10 SOLVED m=-10 q=-2 j=-2 w=yy moves=13
+4 11 UNSOLVED tried ['YYYxyX', 'yxYYYYX', 'yyyyyxYYYYX', 'yxyX', 'yyyyyyyyyxYYYYX', 'YYYYYYYxyX', 'YYYxyyyyyyX', 'yyyyyxyX']
+4 12 known
+4 13 UNSOLVED tried ['yyyyyyyxYYX', 'YxyyyX', 'YYYYYYYYYxyyyX', 'YYYYYxyyyX', 'yyyxYYX', 'yyyxYYYYYYYX', 'yyyxyyyX', 'YxYYX']
+4 14 SOLVED m=-6 q=-1 j=-2 w=yyxYX moves=50
+4 15 known
+4 16 known
+4 17 UNSOLVED tried ['YxYYYX', 'yyyxYYYX', 'YxyyyyyyyX', 'yyyyyyyxYYYX', 'YYYYYxyyX', 'yyyxYYYYYYYYX', 'yyyxyyX', 'YxyyX']
+4 18 SOLVED m=-2 q=0 j=-2 w=yyxYYX moves=26
+4 19 SOLVED m=-1 q=0 j=-1 w=yxYX moves=132

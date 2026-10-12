@@ -1,0 +1,8 @@
+3 5 yxyX YYxyX yxYYYX yyyyxyX
+3 7 YxYX yyxYX YxyyyX YYYYxYX
+4 3 yxYYX yxyyyX YYYxYYX YYYxyyyX
+4 7 yxyyX yxYYYX YYYxyyX YYYxYYYX
+4 9 YxYX yyyxYX YxyyyyX YYYYYxYX
+4 11 yxyX YYYxyX yxYYYYX yyyyyxyX
+4 13 YxYYX YxyyyX yyyxYYX yyyxyyyX
+4 17 YxyyX YxYYYX yyyxyyX yyyxYYYX
