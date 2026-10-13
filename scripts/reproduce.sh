@@ -8,7 +8,7 @@
 #   3. copies lean/ACProof/ next to AC.lean and appends ONE [[lean_lib]] entry to lakefile.toml
 #      (AC.lean itself is never modified; warningAsError = true comes from the official lakefile);
 #   4. fetches the Mathlib cache, builds AC and ACProof, and prints `#print axioms` for every submission theorem;
-#   5. fails if any `sorry`/`admit` occurs or any theorem uses an axiom beyond propext/Classical.choice/Quot.sound.
+#   5. fails if any `sorry`/`admit` occurs or any theorem uses an axiom outside {propext, Classical.choice, Quot.sound}.
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OFFICIAL_URL="https://github.com/SAIRcompetition/Andrews-Curtis.git"
@@ -33,6 +33,6 @@ echo "== sorry/admit scan:"
 if grep -rnwE 'sorry|admit' ACProof/*.lean; then echo "FOUND sorry/admit"; exit 1; else echo "none"; fi
 echo "== #print axioms (ACProof/Check.lean):"
 lake env lean ACProof/Check.lean | tee axioms.out
-N=$(grep -c 'depends on axioms' axioms.out); BAD=$(grep 'depends on axioms' axioms.out | grep -vc '\[propext, Classical.choice, Quot.sound\]' || true)
+N=$(grep -cE 'depends on axioms|does not depend on any axioms' axioms.out); BAD=$(grep 'depends on axioms' axioms.out | grep -vcE '\[((propext|Classical.choice|Quot.sound)(, )?)*\]$' || true)
 echo "== theorems audited: $N; with nonstandard axioms: $BAD"
 [ "$N" -eq "$(grep -c '^#print axioms' ACProof/Check.lean)" ] && [ "$BAD" -eq 0 ] && echo "== REPRODUCE OK"

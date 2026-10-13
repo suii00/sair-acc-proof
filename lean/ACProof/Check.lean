@@ -2,6 +2,7 @@ import ACProof.MS2All
 import ACProof.MS2Alt
 import ACProof.N3
 import ACProof.N4
+import ACProof.AK3Link
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
 #print axioms AC.reach_mul_normalClosure
@@ -52,3 +53,7 @@ import ACProof.N4
 #print axioms AC.MS4_wA_m18
 #print axioms AC.MS4_wA_m19
 #print axioms AC.MS4_wA
+#print axioms AC.link_identity
+#print axioms AC.phi_MS3_wA5_reach_wk8
+#print axioms AC.MS3_wA5_iff_AK3
+#print axioms AC.MS3_wA_of_AK3
