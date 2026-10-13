@@ -39,3 +39,11 @@ MMS02 Prop 1.2 states AK(3) is stably AC-trivial. Shehper et al. v2 report a mis
 about AK(3). The status needs a careful reading before any use. If a correct stable trivialization of AK(3) exists, the same
 automorphism transfer should give a stable trivialization of MS(3, wA 5), since the official `StableStep` setting is also
 preserved by endomorphisms. This would need a separate formalization (official `AC.StableStep`); it has not been attempted.
+
+## H4 — does the H3 mechanism extend to n = 4 (link with AK(4))? — EXPERIMENT only
+scripts/h5n.py (Britton conjugacy, conjugators of length ≤ 6, |a| ≤ 6, |k| ≤ 14):
+- n = 4, m = −9 (class {9, 11} mod 20): HIT a = −6, k = −9, conjugator y⁻¹x⁻¹y⁻⁴. This suggests MS(4, wA(−9)) is
+  AC-triviality-equivalent to AK(4). NOT verified: no hand derivation or Lean proof yet.
+- n = 4, m ∈ {3, 7, −3, −7}: no hit within these bounds (classes {3,17}, {7,13}).
+- n = 3, m ∈ {−5, 7, 2, 10}: no hit within these bounds. The m = 5 hit is enough for the whole class via period and transfer.
+Next step: derive the BS(4,5) identity for the n = 4 hit and formalize it the same way as AK3Link.
