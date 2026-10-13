@@ -1,4 +1,4 @@
-import ACProof.MS2All
+import ACProof.NewFamilies
 
 /-!
 # Periodicity: `MS(n, wA m) ~ MS(n, wA (m + n(n+1)))` for all `n : ℕ`, `m : ℤ`.

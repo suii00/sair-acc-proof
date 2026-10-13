@@ -1,5 +1,33 @@
-import ACProof.N4
+import ACProof.Period
+import ACProof.Tactics
 
+/-!
+# General families of AC-trivial `MS(n, wA m)` (all `n`), independent of the instance files.
+
+* `MS_wA_mult_succ` : `m ∈ (n+1)ℤ`.
+* `MS_wA_one`       : `m = 1` (via `w⋆`).
+* `MS_wA_negate`    : transfer of AC-triviality from `wA (-m)` to `wA m` (via the automorphism `y ↦ y⁻¹`).
+* `MS_wA_neg_one`, `MS_wA_pm_one` : `m ≡ ±1 (mod n(n+1))`.
+* `MS_wA_cover`     : `m ∈ nℤ ∪ (n+1)ℤ ∪ (±1 + n(n+1)ℤ)`.
+-/
+
+namespace AC
+
+theorem MS_wA_mult_succ (n : ℕ) (q : ℤ) :
+    Reachable (MS n (wA (q * ((n : ℤ) + 1)))) (standard 2) := by
+  have h := MS_wA_reduce n q q
+  rw [show q * (n : ℤ) + q = q * ((n : ℤ) + 1) by ring] at h
+  have e : gy ^ (-q) * gx * gy ^ (q - q) * gx⁻¹ = gy ^ (-q) := by group
+  rw [e] at h
+  exact h.trans' (MS_ypow_reachable n (-q))
+
+
+theorem MS_wA_one (n : ℕ) : Reachable (MS n (wA 1)) (standard 2) := by
+  have e : wA 1 = wstar := by simp [wA, wstar]
+  rw [e]; exact MS_wstar_reachable n
+
+
+end AC
 /-!
 # The symmetry `y ↦ y⁻¹`: `MS(n, wA m)` and `MS(n, wA (-m))` are simultaneously AC-trivial.
 
@@ -43,9 +71,6 @@ theorem MS_wA_negate (n : ℕ) (m : ℤ) (h : Reachable (MS n (wA (-m))) (standa
   rw [e0]
   exact s1.trans' (s2.trans' (h1.trans' s3))
 
-end AC
-
-namespace AC
 
 /-- `MS(n, y x y⁻¹ x⁻¹)` (i.e. `wA (-1)`) is AC-trivial for every `n`. -/
 theorem MS_wA_neg_one (n : ℕ) : Reachable (MS n (wA (-1))) (standard 2) :=
@@ -62,5 +87,16 @@ theorem MS_wA_pm_one (n : ℕ) (t : ℤ) :
   · have := MS_wA_period_mul n (-1 + t * (((n : ℤ) + 1) * n)) (-t)
     rw [show -1 + t * (((n : ℤ) + 1) * n) + -t * (((n : ℤ) + 1) * n) = -1 by ring] at this
     exact this.trans' (MS_wA_neg_one n)
+
+/-- Union of the general families: `m ∈ nℤ ∪ (n+1)ℤ ∪ (1 + n(n+1)ℤ) ∪ (-1 + n(n+1)ℤ)`. -/
+theorem MS_wA_cover (n : ℕ) (m : ℤ)
+    (hm : (∃ q : ℤ, m = q * n) ∨ (∃ q : ℤ, m = q * ((n : ℤ) + 1)) ∨
+      (∃ t : ℤ, m = 1 + t * (((n : ℤ) + 1) * n)) ∨ (∃ t : ℤ, m = -1 + t * (((n : ℤ) + 1) * n))) :
+    Reachable (MS n (wA m)) (standard 2) := by
+  rcases hm with ⟨q, rfl⟩ | ⟨q, rfl⟩ | ⟨t, rfl⟩ | ⟨t, rfl⟩
+  · exact MS_wA_mult n q
+  · exact MS_wA_mult_succ n q
+  · exact (MS_wA_pm_one n t).1
+  · exact (MS_wA_pm_one n t).2
 
 end AC

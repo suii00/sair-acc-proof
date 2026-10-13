@@ -12,7 +12,7 @@ Status column: [V]=metadata confirmed by web search (2026-10-13); [M]=from memor
 | 7 | G. Havas, C. Ramsay | Breadth-first search and the Andrews–Curtis conjecture, IJAC 13 (2003) | https://doi.org/10.1142/S0218196703001365 | IJAC 13(1):61–68. Length ≤12 AC-trivial (also Myasnikov/MAGNUS) | V |
 | 8 | M.R. Bridson | The complexity of balanced presentations and the Andrews–Curtis conjecture (2015) | arXiv:1504.04187 | AC-trivial presentations needing superexponentially (tower) many moves | V (via citation) |
 | 9 | B. Lishak | Balanced finite presentations of the trivial group, J. Topol. Anal. (2017) | arXiv:1504.00418 | Independent superexponential lower bounds | V (via citation) |
-| 10 | A. Lisitsa | First-order theorem proving in the exploration of Andrews–Curtis conjecture (2018); Stable AC trivialization of AK(3) revisited (2024) | arXiv:1712.xxxxx / exa link | Automated deduction (Prover9) AC sequences; alt. stable trivialization of AK(3) | V (2024 paper) |
+| 10 | A. Lisitsa | First-order theorem proving in the exploration of Andrews–Curtis conjecture (2018); Stable AC trivialization of AK(3) revisited (2024) | (2018 arXiv id NOT recorded; not cited in manuscript) | Automated deduction (Prover9) AC sequences; alt. stable trivialization of AK(3) | V (2024 paper) |
 | 11 | D. Panteleev, A. Ushakov | Conjugacy search problem and the Andrews–Curtis conjecture, Groups Complex. Cryptol. (2019) | arXiv:1609.00325 (corrected) | ACM-moves, automorphism moves; failed to trivialize AK(n), n>2 | V |
 | 12 | A. Shehper, A. Medina-Mardones, et al., S. Gukov | What makes math problems hard for reinforcement learning: a case study (NeurIPS 2025) | https://arxiv.org/abs/2408.15332 | Thm A: MS(1,w) ∀w; MS(n, y^-1xyx^-1) ∀n; MS(2, y^-k x^-1yxy) ∀k are AC-trivial. Thm B: AK(n) length-reducible (n≥2). v1 AK(3) stable claim retracted in v2 (MMS misprint) | V |
 | 13 | S.M. Gersten | On Rapaport's example in presentations of the trivial group (preprint, 1987) | — | AK(2) trivialization; Rapaport-type examples | M |
@@ -29,3 +29,7 @@ Additional (found 2026-10-13):
 - Hog-Angeloni, Metzler, The Andrews–Curtis conjecture and its generalizations, LMS LN 197 (1993) 365–380 [V].
 - Lishak arXiv number (1504.00418) still UNVERIFIED; Gersten preprint UNVERIFIED.
 - Shehper et al. v2 numbering: abstract-level "Theorem B" (i)-(iii) = main-text Theorem 2, Theorem 3, Corollary 9. Cor. 9 relies on AK(2) AC-triviality + MMS Prop. 5 + Theorem 6.
+
+**v1 note (2026-10-13):** the manuscript (`draft_writeup.md` §5) cites only the verified entries [AC], [MiS], [AK], [MMS], [SMF] and the
+official repo, with theorem numbers checked against arXiv:2408.15332v2 and arXiv:math/0302080v1. [M] entries (Gersten, Lishak id,
+Hog-Angeloni/Metzler survey) and the Lisitsa 2018 item are NOT cited.

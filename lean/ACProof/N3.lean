@@ -1,4 +1,4 @@
-import ACProof.Period
+import ACProof.General
 
 /-!
 # Multiples of `n+1`, and the case `n = 3` of `MS(n, wA m)`.
@@ -10,47 +10,7 @@ import ACProof.Period
 
 namespace AC
 
-theorem MS_wA_mult_succ (n : ℕ) (q : ℤ) :
-    Reachable (MS n (wA (q * ((n : ℤ) + 1)))) (standard 2) := by
-  have h := MS_wA_reduce n q q
-  rw [show q * (n : ℤ) + q = q * ((n : ℤ) + 1) by ring] at h
-  have e : gy ^ (-q) * gx * gy ^ (q - q) * gx⁻¹ = gy ^ (-q) := by group
-  rw [e] at h
-  exact h.trans' (MS_ypow_reachable n (-q))
-
-
 set_option maxHeartbeats 1000000
-
-macro "step_tac3" : tactic =>
-  `(tactic| first | rfl | (simp; done) | (simp [sq, mul_assoc]; done) | (simp [pow_succ, mul_assoc]; done) | (simp; group) | group | (simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Function.update, Matrix.head_cons]; group) | (simp; simp only [zpow_neg, zpow_one, zpow_two, pow_two, sq, mul_assoc, mul_inv_rev, inv_inv]; done))
-
-theorem std_xy {a b : FreeGroup (Fin 2)} (ha : a = gx ∨ a = gx⁻¹) (hb : b = gy ∨ b = gy⁻¹) :
-    Reachable ![a, b] (standard 2) := by
-  have hs : (standard 2) = ![gx, gy] := by apply fin2_ext <;> rfl
-  rw [hs]
-  rcases ha with rfl | rfl <;> rcases hb with rfl | rfl
-  · exact Relation.ReflTransGen.refl
-  · exact reach_of_eq (reach_inv ![gx, gy⁻¹] 1) (by apply fin2_ext <;> simp)
-  · exact reach_of_eq (reach_inv ![gx⁻¹, gy] 0) (by apply fin2_ext <;> simp)
-  · exact (reach_inv ![gx⁻¹, gy⁻¹] 0).trans' (reach_of_eq (reach_inv _ 1) (by apply fin2_ext <;> simp))
-
-theorem std_yx {a b : FreeGroup (Fin 2)} (ha : a = gx ∨ a = gx⁻¹) (hb : b = gy ∨ b = gy⁻¹) :
-    Reachable ![b, a] (standard 2) := by
-  refine (reach_perm ![b, a] (Equiv.swap 0 1)).trans' ?_
-  have e : (![b, a] ∘ Equiv.swap (0 : Fin 2) 1) = ![a, b] := by
-    apply fin2_ext <;> simp
-  rw [e]; exact std_xy ha hb
-
-macro "std_fin" : tactic =>
-  `(tactic| first | exact std_xy (by first | exact Or.inl rfl | exact Or.inr rfl) (by first | exact Or.inl rfl | exact Or.inr rfl) | exact std_yx (by first | exact Or.inl rfl | exact Or.inr rfl) (by first | exact Or.inl rfl | exact Or.inr rfl))
-
-macro "ms_eq_tac" : tactic =>
-  `(tactic| (apply fin2_ext <;> first
-    | rfl
-    | (simp [MS, pow_succ, mul_assoc]; done)
-    | (simp [MS, pow_succ, mul_assoc, zpow_ofNat]; done)
-    | (simp [MS]; group)
-    | (simp only [MS, Matrix.cons_val_zero, Matrix.cons_val_one]; group)))
 
 theorem n3m10_path : Reachable ![(gx⁻¹ * gy * gy * gy * gx * gy⁻¹ * gy⁻¹ * gy⁻¹ * gy⁻¹), (gx * gx * gy⁻¹ * gy⁻¹ * gx⁻¹ * gy⁻¹)] (standard 2) := by
   have s0 : Reachable ![(gx⁻¹ * gy * gy * gy * gx * gy⁻¹ * gy⁻¹ * gy⁻¹ * gy⁻¹), (gx * gx * gy⁻¹ * gy⁻¹ * gx⁻¹ * gy⁻¹)] ![(gy * gy * gy * gx * gy⁻¹ * gy⁻¹ * gy⁻¹ * gy⁻¹ * gx⁻¹), (gx * gx * gy⁻¹ * gy⁻¹ * gx⁻¹ * gy⁻¹)] := reach_of_eq (reach_conj ![(gx⁻¹ * gy * gy * gy * gx * gy⁻¹ * gy⁻¹ * gy⁻¹ * gy⁻¹), (gx * gx * gy⁻¹ * gy⁻¹ * gx⁻¹ * gy⁻¹)] 0 gx) (by apply fin2_ext <;> step_tac3)
@@ -205,10 +165,6 @@ theorem MS3_wA_m1 : Reachable (MS 3 (wA (-1))) (standard 2) := by
       ![(gx⁻¹ * gy * gy * gy * gx * gy⁻¹ * gy⁻¹ * gy⁻¹ * gy⁻¹), (gx * gx * gy * gx⁻¹ * gy⁻¹)] := by
     ms_eq_tac
   rw [e] at h; exact h.trans' n3m1_path
-
-theorem MS_wA_one (n : ℕ) : Reachable (MS n (wA 1)) (standard 2) := by
-  have e : wA 1 = wstar := by simp [wA, wstar]
-  rw [e]; exact MS_wstar_reachable n
 
 /-- `MS(3, y^{-m} x y^m x^{-1})` is AC-trivial whenever `m mod 12 ∉ {5, 7}`. -/
 theorem MS3_wA (m : ℤ) (h5 : m % 12 ≠ 5) (h7 : m % 12 ≠ 7) :

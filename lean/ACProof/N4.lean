@@ -1,4 +1,4 @@
-import ACProof.N3
+import ACProof.General
 
 /-! # `MS(4, wA m)`: certified search paths for residues 2, 6, 14, 18, 19 (mod 20). -/
 
