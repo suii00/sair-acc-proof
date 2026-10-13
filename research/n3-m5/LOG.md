@@ -47,3 +47,16 @@ scripts/h5n.py (Britton conjugacy, conjugators of length ≤ 6, |a| ≤ 6, |k| �
 - n = 4, m ∈ {3, 7, −3, −7}: no hit within these bounds (classes {3,17}, {7,13}).
 - n = 3, m ∈ {−5, 7, 2, 10}: no hit within these bounds. The m = 5 hit is enough for the whole class via period and transfer.
 Next step: derive the BS(4,5) identity for the n = 4 hit and formalize it the same way as AK3Link.
+
+## H5 — n = 4 link to AK(4) — VERIFIED (Lean, AK4Link.lean; axioms ⊆ {propext, Classical.choice, Quot.sound})
+Paper proof: φ = phiK(−6) (x ↦ x y⁻⁶) maps the r1 of wA(−9) to x y⁻⁶ x y⁹ x⁻¹ y⁻⁹. In BS(4,5), with g = y⁻¹x⁻¹y⁻⁴ and using
+Y^{4k}X = XY^{5k} for k = −1, −3, −2 (`bs_pow`), g·(…)·g⁻¹ = x y⁻¹ x⁻¹ y⁻¹ x y⁻⁹ = x·w₋₉⁻¹ (`link4_identity`).
+- `phi_MS4_wAm9_reach_wkm9`: an AC path from phiK(−6) ∘ MS(4, wA(−9)) to MS(4, w₋₉).
+- **`MS4_wAm9_iff_AK4`**: MS(4, wA(−9)) is AC-trivial ⇔ AK(4) is AC-trivial (a triviality transfer).
+- `MS4_wA_9_11_of_AK4`: AK(4) AC-trivial ⇒ MS(4, wA m) AC-trivial for all m ≡ 9, 11 (mod 20).
+Classes {3, 17} and {7, 13} mod 20 for n = 4 remain unlinked (H4 found no hit).
+
+## Novelty (see NOVELTY.md)
+The H3 result (MS(3, wA 5) ⇔ AK(3)) is KNOWN in a stronger form: Shehper et al. v2 claim it, Carreras 2026 Thm 4
+certifies it, and Fagan et al. 2026 list it in class 13₁, because MS(3, wA 5) ~ MS(3, yxyx⁻¹) ~ ⟨x⁻¹y³x = y⁴, x = y⁻¹x²y⁻¹⟩.
+Our contribution there is an independent Lean-checked proof only.
