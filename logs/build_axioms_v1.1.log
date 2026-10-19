@@ -1,0 +1,206 @@
+== workdir: /tmp/tmp.hQMoQfLlzm/work
+== research repo: 0a76431fb67bf66db7efc28a85911ac453179acc
+== official commit: a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
+AC.lean: OK
+== official lakefile has warningAsError = true
+== diff vs official (tracked files):
+ competition/tools/lean/lakefile.toml | 4 ++++
+ 1 file changed, 4 insertions(+)
+== toolchain: leanprover/lean4:v4.29.1
+Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+info: ACStatement: no previous manifest, creating one from scratch
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision '5e932f97dd25535344f80f9dd8da3aab83df0fe6'
+info: toolchain not updated; already up-to-date
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision '83e90935a17ca19ebe4b7893c7f7066e266f50d3'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision 'c5d5b8fe6e5158def25cd28eb94e4141ad97c843'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision '48d5698bc464786347c1b0d859b18f938420f060'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '4dd0959c44d1af0462bd604d0f87c5781307d709'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '7152850e7b216a0d409701617721b6e469d34bf6'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision '707efb56d0696634e9e965523a1bbe9ac6ce141d'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '756e3321fd3b02a85ffda19fef789916223e578c'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '7802da01beb530bf051ab657443f9cd9bc3e1a29'
+info: mathlib: running post-update hooks
+✔ [2/22] Built Cache.Init (248ms)
+✔ [3/22] Built Cache.Lean (306ms)
+✔ [4/22] Built Cache.Init:c.o (92ms)
+✔ [7/22] Built Cache.Lean:c.o (109ms)
+✔ [8/22] Built Batteries.Data.String.Basic (270ms)
+✔ [9/22] Built Batteries.Data.String.Basic:c.o (101ms)
+✔ [10/22] Built Batteries.Data.Array.Match (629ms)
+✔ [11/22] Built Batteries.Data.String.Matcher (314ms)
+✔ [12/22] Built Batteries.Data.Array.Match:c.o (221ms)
+✔ [13/22] Built Cache.IO (1.2s)
+✔ [14/22] Built Batteries.Data.String.Matcher:c.o (198ms)
+✔ [15/22] Built Cache.Hashing (602ms)
+✔ [16/22] Built Cache.Hashing:c.o (424ms)
+✔ [17/22] Built Cache.IO:c.o (1.4s)
+✔ [18/22] Built Cache.Requests (1.6s)
+✔ [19/22] Built Cache.Main (650ms)
+✔ [20/22] Built Cache.Main:c.o (521ms)
+✔ [21/22] Built Cache.Requests:c.o (2.1s)
+✔ [22/22] Built cache:exe (798ms)
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Decompressing 8229 file(s) (3 already decompressed)
+Decompressed in 12579 ms
+Completed successfully!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8232 file(s)
+✔ [8248/8269] Built AC (3.4s)
+✔ [8250/8269] Built ACProof.Consequence (1.8s)
+✔ [8251/8269] Built ACProof.Basic (8.8s)
+✔ [8252/8269] Built ACProof.MillerSchupp (9.0s)
+✔ [8253/8269] Built ACProof.MS1 (7.4s)
+✔ [8254/8269] Built ACProof.MSwk (7.9s)
+✔ [8255/8269] Built ACProof.MS2 (12s)
+✔ [8256/8269] Built ACProof.AK (7.4s)
+✔ [8257/8269] Built ACProof.NewFamilies (6.3s)
+✔ [8258/8269] Built ACProof.Comparison (5.2s)
+✔ [8259/8269] Built ACProof.Tactics (5.4s)
+✔ [8260/8269] Built ACProof.Period (5.8s)
+✔ [8261/8269] Built ACProof.General (5.0s)
+✔ [8262/8269] Built ACProof.MS2All (11s)
+✔ [8263/8269] Built ACProof.MS2Alt (5.0s)
+✔ [8264/8269] Built ACProof.N3 (38s)
+✔ [8265/8269] Built ACProof.AK3Link (6.6s)
+✔ [8266/8269] Built ACProof.N4 (46s)
+✔ [8267/8269] Built ACProof.AK4Link (5.7s)
+ℹ [8268/8269] Built ACProof.Check (17s)
+info: ACProof/Check.lean:10:0: 'AC.reach_mul_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:11:0: 'AC.Reachable.presentsTrivialGroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:12:0: 'AC.Reachable.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:13:0: 'AC.Reachable.presentsTrivialGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:14:0: 'AC.reach_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:15:0: 'AC.reach_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:16:0: 'AC.reach_mulLeft' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:17:0: 'AC.Reachable.map' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:18:0: 'AC.Reachable.relabel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:19:0: 'AC.MS1_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:20:0: 'AC.MS_wstar_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:21:0: 'AC.MS_wk_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:22:0: 'AC.MS_wk_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:23:0: 'AC.MS2_wk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:24:0: 'AC.AK_reach_MS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:25:0: 'AC.AK2_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:26:0: 'AC.MS_reach_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:27:0: 'AC.MS_ypow_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:28:0: 'AC.MS_wA_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:29:0: 'AC.MS_wA_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:30:0: 'AC.MS_wA_negsucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:31:0: 'AC.MS_wA_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:32:0: 'AC.MS_wA_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:33:0: 'AC.MS_wA_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:34:0: 'AC.MS_wA_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:35:0: 'AC.MS_wA_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:36:0: 'AC.MS_wA_period_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:37:0: 'AC.MS_wA_of_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:38:0: 'AC.MS_wA_mult_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:39:0: 'AC.MS_wA_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:40:0: 'AC.MS_wA_negate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:41:0: 'AC.MS_wA_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:42:0: 'AC.MS_wA_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:43:0: 'AC.MS_wA_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:44:0: 'AC.MS2_v_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:45:0: 'AC.MS2_v_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:46:0: 'AC.MS2_wA_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:47:0: 'AC.MS2_wA_all'' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:48:0: 'AC.MS3_wA_m10' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:49:0: 'AC.MS3_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:50:0: 'AC.MS3_wA_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:51:0: 'AC.MS3_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:52:0: 'AC.MS4_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:53:0: 'AC.MS4_wA_m6' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:54:0: 'AC.MS4_wA_m14' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:55:0: 'AC.MS4_wA_m18' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:56:0: 'AC.MS4_wA_m19' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:57:0: 'AC.MS4_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:58:0: 'AC.link_identity' depends on axioms: [propext, Quot.sound]
+info: ACProof/Check.lean:59:0: 'AC.phi_MS3_wA5_reach_wk8' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:60:0: 'AC.MS3_wA5_iff_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:61:0: 'AC.MS3_wA_of_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:62:0: 'AC.bs_pow' depends on axioms: [propext]
+info: ACProof/Check.lean:63:0: 'AC.link4_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:64:0: 'AC.phi_MS4_wAm9_reach_wkm9' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:65:0: 'AC.MS4_wAm9_iff_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:66:0: 'AC.MS4_wA_9_11_of_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:67:0: 'AC.MS_wA_reach_SnPres' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:68:0: 'AC.SnPres_reach_MS_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8269 jobs).
+== sorry/admit scan:
+none
+== #print axioms (ACProof/Check.lean):
+'AC.reach_mul_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_mulLeft' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.relabel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS1_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wstar_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_reach_MS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_reach_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_ypow_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negsucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_of_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.link_identity' depends on axioms: [propext, Quot.sound]
+'AC.phi_MS3_wA5_reach_wk8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA5_iff_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_of_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.bs_pow' depends on axioms: [propext]
+'AC.link4_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.phi_MS4_wAm9_reach_wkm9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wAm9_iff_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_9_11_of_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reach_SnPres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.SnPres_reach_MS_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+== theorems audited: 59; with nonstandard axioms: 0
+== REPRODUCE OK
+EXIT 0

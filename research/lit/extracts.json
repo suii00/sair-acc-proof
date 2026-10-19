@@ -1,0 +1,71 @@
+{
+  "title": "SAIR ACC proof track v1.1 — prior-art extracts (George, Sneiderman, Lisitsa, Carreras, Fagan, Shehper)",
+  "question": "Which of our Lean results (AK links, wA period, MS_wA_cover, n=2 all m) were already formalized or stated, by whom, against which definitions?",
+  "stopped": "Every required claim has a source location (round 1 completed; one backward/forward chaining move done via OpenAlex and repository links).",
+  "claims": [
+    {
+      "claim": "C1 George/Zhao: what was formalized, and whether the repository is public",
+      "status": "付いた",
+      "note": "Blog post by Robert Joseph George (June 2026). Uses its own Presentation/ACMove/GeneralACMove types, not the SAIR AC.lean.",
+      "quotes": [
+        {"file": "george-2026-formalizing-ac-aristotle.md", "line": 172, "text": "Together, we have now fully formalized the mathematical results in Sergei and his", "mark": "〔本人〕"},
+        {"file": "george-2026-formalizing-ac-aristotle.md", "line": 177, "text": "computation. We plan to release the full repository soon.", "mark": "〔本人〕"},
+        {"file": "george-2026-formalizing-ac-aristotle.md", "line": 251, "text": "inductive ACMove : Presentation (Fin 2) → Presentation (Fin 2) → Prop", "mark": "〔本人〕"},
+        {"file": "george-2026-formalizing-ac-aristotle.md", "line": 400, "text": "theorem AK_equiv_MS_w₁ (n : Nat) (_hn : 2 ≤ n) :", "mark": "〔本人〕"},
+        {"file": "george-2026-formalizing-ac-aristotle.md", "line": 668, "text": "Inversion, replacing \\(r_i\\) by \\(r_i^{-1}\\), was not a constructor.", "mark": "〔本人〕"}
+      ]
+    },
+    {
+      "claim": "C2 Sneiderman (public GitHub repo, 2026-09-12): three-parameter MS family against the official SAIR AC.lean, with periods and the n ≤ 2 case",
+      "status": "付いた",
+      "note": "presentation n a b c = (first n, second a b c). Our MS n (wA m) is AC-equivalent to the point (a,b,c) = (−m, m, 0); see lean/ACProof/Comparison.lean.",
+      "quotes": [
+        {"file": "sneiderman-2026-ACMillerSchupp.md", "line": 24, "text": "def second (a b c : ℤ) : Word 2 := x⁻¹ * y ^ a * x * y ^ b * x⁻¹ * y ^ c", "mark": "〔本人〕"},
+        {"file": "sneiderman-2026-ACResidueClasses.md", "line": 53, "end": 55, "text": "theorem a_period (n : ℕ) (a b c t : ℤ) : Reachable (presentation n a b c) (standard 2) ↔ Reachable (presentation n (a - (n : ℤ) * t) b c) (standard 2) := by", "mark": "〔本人〕"},
+        {"file": "sneiderman-2026-ACResidueClasses.md", "line": 71, "end": 73, "text": "theorem b_period (n : ℕ) (a b c t : ℤ) : Reachable (presentation n a b c) (standard 2) ↔ Reachable (presentation n a (b + (n + 1 : ℤ) * t) c) (standard 2) :=", "mark": "〔本人〕"},
+        {"file": "sneiderman-2026-ACResidueClasses.md", "line": 139, "end": 140, "text": "theorem all_parameters_two (a b c : ℤ) : Reachable (presentation 2 a b c) (standard 2) := by", "mark": "〔本人〕"},
+        {"file": "sneiderman-2026-ACUniformShearFamily.md", "line": 187, "end": 188, "text": "theorem uniform_family (n : ℕ) (c : ℤ) : Reachable (presentation n ((n : ℤ) - 1) 1 c) (standard 2) := by", "mark": "〔本人〕"},
+        {"file": "sneiderman-2026-readme.md", "line": 108, "text": "The official definition and verifier are pinned to SAIR commit `99a65377c5c4f412cd9af7b8d31c41464a855736`.", "mark": "〔本人〕"}
+      ]
+    },
+    {
+      "claim": "C3 Lisitsa 2025 correction: the stable AK(3) claim was withdrawn",
+      "status": "付いた",
+      "note": "The arXiv v1 abstract (Jan 2025) states the claim. The Journal of Computational Algebra abstract (OpenAlex record W4415219113, DOI 10.1016/j.jaca.2025.100041) retracts it. ScienceDirect returned 403 to fetch.py.",
+      "quotes": [
+        {"file": "arxiv-2501.18601-lisitsa-stable-ak3.md", "line": 16, "text": "This result eliminates AK(3) as a potential counterexample to the stable Andrews-Curtis conjecture.", "mark": "〔論文〕"},
+        {"file": "lisitsa-2025-jca-abstract-openalex.md", "line": 9, "text": "Subsequent to our initial submission, it has emerged that the earlier theoretical claim about the stable AC-trivializability of P —on which the Shehper et al. result relied—was based on an incorrect theorem, and thus the status of AK ( 3 ) remains unresolved.", "mark": "〔論文〕"},
+        {"file": "arxiv-2408.15332-shehper-v2.txt", "line": 238, "end": 240, "text": "However, after closer inspection, we discovered a subtle misprint … This misprint", "mark": "〔論文〕"}
+      ]
+    },
+    {
+      "claim": "C4 AK(3) ~ MS(3, ·) links already stated or certified",
+      "status": "付いた",
+      "quotes": [
+        {"file": "arxiv-2408.15332-shehper-v2.txt", "line": 536, "end": 537, "text": "⟨x, y | x−1 y 3 x = y 4 , x = y ±1 x2 y ±1 ⟩ are AC-equivalent to AK(3)", "mark": "〔論文〕"},
+        {"file": "arxiv-2607.23611-carreras-length14.txt", "line": 200, "text": "Theorem 4. P4 = MS(3, y −1 x2 y −1 ) is AC-equivalent to AK(3).", "mark": "〔論文〕"}
+      ]
+    },
+    {
+      "claim": "C5 Do the Carreras and Fagan et al. repositories contain Lean?",
+      "status": "付いた",
+      "note": "No .lean files in either tree (GitHub API, d347fc47 and 6a12515f). Carreras uses a Python verifier and Prover9 inputs; ACSolverX is JAX. Fagan et al. cite Zhang et al. 2025 as concurrent Lean-based work.",
+      "quotes": [
+        {"file": "carreras-ac-certificates-readme.md", "line": 18, "text": "python3 ac_verify.py certs/cert_ms3_yinvx2yinv_equiv_ak3.json # Thm 4: 13 [22]", "mark": "〔本人〕"},
+        {"file": "acsolverx-readme.md", "line": 13, "text": "The code", "mark": "〔本人〕"},
+        {"file": "arxiv-2606.21611-fagan-two-hump.txt", "line": 87, "text": "bines Lean-based formal verification and LLM-extracted", "mark": "〔論文〕"}
+      ]
+    }
+  ],
+  "disagreements": [
+    {"topic": "Stable AC-triviality of AK(3)", "quotes": [
+      {"file": "arxiv-2501.18601-lisitsa-stable-ak3.md", "line": 16, "text": "This result eliminates AK(3) as a potential counterexample to the stable Andrews-Curtis conjecture.", "who": "Lisitsa, arXiv v1 (Jan 2025)"},
+      {"file": "lisitsa-2025-jca-abstract-openalex.md", "line": 9, "text": "thus the status of AK ( 3 ) remains unresolved", "who": "Lisitsa, J. Comput. Algebra 16 (2025) 100041"}
+    ]}
+  ],
+  "unreached": [
+    "George/Zhao Lean repository: not public ('plan to release the full repository soon'); no commit is available.",
+    "OpenReview lt3Lpa4d2d (Zhang, Zhou, George, Gukov, Anandkumar, NeurIPS 2025 MATH-AI): fetch.py got a 415-character page (bot check). The user's browser would be needed.",
+    "ScienceDirect page of Lisitsa 2025 (403). The abstract was taken from OpenAlex instead."
+  ]
+}
