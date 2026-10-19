@@ -1,8 +1,5 @@
 # Novelty check (2026-10-14 JST) — AK(3) link and wA-family results
 
-> Note: the AK(3)/AK(4) Lean files (`AK3Link.lean`, `AK4Link.lean`) live on branch `research/n3-m5`, not in submission-v1.
-> This file is a post-v1 record; the `submission-v1` tag is unchanged.
-
 Method:
 - **Citation lists:** Semantic Scholar API citation lists of Shehper et al. arXiv:2408.15332 (15 citing works), MMS
   arXiv:math/0302080 (29) and Panteleev–Ushakov arXiv:1609.00325 (10). A further Semantic Scholar query hit the API rate
