@@ -34,6 +34,8 @@ official lakefile already sets `warningAsError = true`. It then runs `lake exe c
 only if every theorem depends on a subset of `{propext, Classical.choice, Quot.sound}`.
 Logs of runs from a fresh clone: `logs/build_axioms_v1.log` (v1, 48 theorems) and `logs/build_axioms_v1.1.log`
 (v1.1, 59 theorems: 57 use exactly the three axioms, `bs_pow` uses [propext], `link_identity` uses [propext, Quot.sound]).
+`logs/build_axioms_v1.1_3ff15e7.log` is a rerun at commit 3ff15e7 (Lean sources identical to v1.1): REPRODUCE OK, same
+59 theorems and axioms.
 
 ## Layout
 - `lean/ACProof/` — Lean sources. Dependency order: Consequence → MillerSchupp, Basic → MS1 → MSwk → MS2 → AK → NewFamilies
