@@ -46,3 +46,8 @@ Logs of runs from a fresh clone: `logs/build_axioms_v1.log` (v1, 48 theorems) an
 - `search/`, `search2/` — search and emission scripts and raw outputs (experiments, not results).
 - `literature.md`, `themes.md`, `STATUS_round*.md` — research records (historical; rounds 6–7 use "~" loosely for
   "AC-triviality equivalent"; the manuscript and this README are authoritative).
+
+## License
+Licensed under the [Apache License 2.0](LICENSE), the same license as the official
+[SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) repository. The official `AC.lean` is
+not included here; `scripts/reproduce.sh` fetches it from the pinned upstream commit.
