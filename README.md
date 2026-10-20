@@ -53,3 +53,8 @@ Logs of runs from a fresh clone: `logs/build_axioms_v1.log` (v1, 48 theorems) an
 Licensed under the [Apache License 2.0](LICENSE), the same license as the official
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) repository. The official `AC.lean` is
 not included here; `scripts/reproduce.sh` fetches it from the pinned upstream commit.
+
+## Submission tags
+
+- `submission-v1.1.2` -> `e768e7afab0a43877b35e7ba6d52cb9239c3075a` (submitted version; `lean/` and `scripts/` identical to v1.1.1)
+- `submission-v1.1.1` -> `30228f7b7030db1852d2e17b713b42e286d3a68e` (superseded: reference [PU] had the wrong initial "P. Panteleev")
