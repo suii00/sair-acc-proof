@@ -8,7 +8,8 @@ SAIRcompetition/Andrews-Curtis @ a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e (`AC.R
 - No `sorry`, `admit` or `native_decide`; the build uses warningAsError.
 - `#print axioms` over all 59 audited theorems gives only axioms from {propext, Classical.choice, Quot.sound}.
 - `scripts/reproduce.sh` clones the official repo at the pinned commit, checks the sha256 of AC.lean, builds, and audits
-  axioms. The log of a run from a fresh clone is in `logs/build_axioms_v1.1.log`.
+  axioms. Logs of runs from a fresh clone: `logs/build_axioms_v1.1.log`
+  and the rerun `logs/build_axioms_v1.1_3ff15e7.log` (2026-10-21).
 
 Notation: MS(n, w) = ⟨x, y | x⁻¹yⁿx = y^{n+1}, x = w⟩ (Miller–Schupp), wA(m) = y^{-m} x y^m x⁻¹,
 AK(n) = ⟨x, y | xⁿ = y^{n+1}, xyx = yxy⟩. "AC-trivial" means `Reachable R (standard 2)`; "R ~ S" means `Reachable R S`.
