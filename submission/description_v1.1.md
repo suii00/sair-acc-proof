@@ -38,7 +38,7 @@ Full paper proofs are in `draft_writeup.md` §3–4.
 - **Build:** the official lakefile has `warningAsError = true`. There is no `sorry`, `admit` or `native_decide`.
 - **Axioms:** `#print axioms` was run on **59** theorems (`lean/ACProof/Check.lean`). All depend only on axioms from {`propext`, `Classical.choice`, `Quot.sound`}. 57 use exactly these three; `bs_pow` uses [`propext`]; `link_identity` uses [`propext`, `Quot.sound`].
 - **Reproduction:** `scripts/reproduce.sh` clones the official repo at the pinned commit and checks the sha256. It copies `lean/ACProof/` alongside, adds one `[[lean_lib]]` entry, builds, scans for sorry/admit, audits axioms, and prints `REPRODUCE OK`.
-- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1.log`. It ran on commit 0a76431. The submitted commit (tag `submission-v1.1.1`) has identical `lean/` and `scripts/`; it differs only in documentation, a LICENSE, and the removal of an unused stale root `ACProof/` copy.
+- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1_3ff15e7.log`. It ran on commit 3ff15e7. The submitted commit (tag `submission-v1.1.2`) has identical `lean/` and `scripts/`; it differs only in documentation.
 
 ## Contribution and prior work (honest scope)
 

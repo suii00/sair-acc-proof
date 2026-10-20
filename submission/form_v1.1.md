@@ -1,10 +1,9 @@
-# SAIR ACC Proof Track — "Create Submission" form draft (v1.1.1)
+# SAIR ACC Proof Track — "Create Submission" form draft (v1.1.2)
 
 **Status: DRAFT. Not submitted.** Repo suii00/sair-acc-proof is public (the user approved this).
-- Submission commit: tag `submission-v1.1.1` → `30228f7b7030db1852d2e17b713b42e286d3a68e`. This is v1.1 plus the Apache-2.0
+- Submission commit: tag `submission-v1.1.2` (the commit containing this file; its SHA is recorded in README). It is v1.1.1 with documentation-only fixes (Panteleev initial, Use of AI section). v1.1.1 was v1.1 plus the Apache-2.0
   LICENSE (PR #1).
-- This form file and the corrected description were committed to main **after** that tag. The tag was not moved, so the
-  tagged tree contains the earlier draft of these submission files. The text to paste is the one below.
+- The tagged tree contains this form file and the final description. Tags submission-v1, v1.1, v1.1.1 were not moved.
 
 ## Title
 Lean-verified AC-triviality for Miller–Schupp MS(n, y^-m x y^m x^-1): period, n=2, partial n=3,4, AK links
@@ -65,7 +64,7 @@ Full paper proofs are in `draft_writeup.md` §3–4.
 - **Build:** the official lakefile has `warningAsError = true`. There is no `sorry`, `admit` or `native_decide`.
 - **Axioms:** `#print axioms` was run on **59** theorems (`lean/ACProof/Check.lean`). All depend only on axioms from {`propext`, `Classical.choice`, `Quot.sound`}. 57 use exactly these three; `bs_pow` uses [`propext`]; `link_identity` uses [`propext`, `Quot.sound`].
 - **Reproduction:** `scripts/reproduce.sh` clones the official repo at the pinned commit and checks the sha256. It copies `lean/ACProof/` alongside, adds one `[[lean_lib]]` entry, builds, scans for sorry/admit, audits axioms, and prints `REPRODUCE OK`.
-- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1.log`. It ran on commit 0a76431. The submitted commit (tag `submission-v1.1.1`) has identical `lean/` and `scripts/`; it differs only in documentation, a LICENSE, and the removal of an unused stale root `ACProof/` copy.
+- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1_3ff15e7.log`. It ran on commit 3ff15e7. The submitted commit (tag `submission-v1.1.2`) has identical `lean/` and `scripts/`; it differs only in documentation.
 
 ## Contribution and prior work (honest scope)
 
@@ -112,7 +111,7 @@ Andrews–Curtis (1965); Akbulut–Kirby (1985); Miller–Schupp (1999); Myasnik
 
 ## GitHub (optional)
 - Repository link: https://github.com/suii00/sair-acc-proof
-- Commit SHA (40 chars): 30228f7b7030db1852d2e17b713b42e286d3a68e (tag `submission-v1.1.1`)
+- Commit SHA (40 chars): the commit tagged `submission-v1.1.2` (see README for the full SHA)
 
 ## arXiv / Paper link (optional)
 (leave empty)
