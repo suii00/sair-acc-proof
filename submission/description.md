@@ -81,6 +81,11 @@ the AC-equivalence form of the period.
   results in its own framework, not against the official AC.lean. The repository was not yet released when we checked, so
   item 7 is a re-formalization against the official definitions, not a first formalization.
 
+## Use of AI
+This work was done with an AI assistant, Claude Code (Anthropic). It was used to write the Lean proofs, run the computer
+searches, and search and read the literature. The proved statements rest on the Lean kernel check against the official
+definitions, not on the AI. The prior-art statements were checked against the cited sources.
+
 ## Where to look
 - Manuscript with paper proofs and the theorem ↔ Lean table: `draft_writeup.md`.
 - Prior-art record: `NOVELTY.md` and `research/lit/`.
