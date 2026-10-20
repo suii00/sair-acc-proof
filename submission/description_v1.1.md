@@ -2,7 +2,7 @@
 
 This is a **partial result** toward the Andrews–Curtis (AC) conjecture. It is **not** a proof of the conjecture. We give Lean 4 kernel-checked AC-trivializations and AC-equivalences for the Miller–Schupp family
 $$\mathrm{MS}(n,\,w_A(m)) = \langle x,y \mid x^{-1}y^{n}x = y^{n+1},\ x = y^{-m}xy^{m}x^{-1}\rangle,$$
-all stated directly against the **unmodified official** `AC.lean` (`AC.Reachable`, `AC.standard`). Much of the triviality content is already implied by prior work (see *Contribution*). We separate what is independent re-verification, what is implied by others, and what may be new.
+all stated directly against the **unmodified official** `AC.lean` (`AC.Reachable`, `AC.standard`). Much of the triviality content is already implied by prior Lean work (see *Contribution*). We separate what is independent re-verification, what is implied by others, and what may be new.
 
 ## Results (all Lean-checked)
 
@@ -13,7 +13,7 @@ all stated directly against the **unmodified official** `AC.lean` (`AC.Reachable
 5. **AK links (AC-triviality transfers, not paths).**
    - $\mathrm{MS}(3,w_A(5))$ is AC-trivial iff $\mathrm{AK}(3)$ is (`MS3_wA5_iff_AK3`). Hence AK(3) AC-trivial ⇒ every $\mathrm{MS}(3,w_A(m))$ is (`MS3_wA_of_AK3`).
    - $\mathrm{MS}(4,w_A(-9))$ is AC-trivial iff $\mathrm{AK}(4)$ is (`MS4_wAm9_iff_AK4`). Hence AK(4) AC-trivial ⇒ the classes $m\equiv 9,11 \pmod{20}$ (`MS4_wA_9_11_of_AK4`).
-6. **Comparison bridge.** $\mathrm{MS}(n,w_A(m))$ is AC-equivalent, by one inversion and one conjugation, to the point $(a,b,c)=(-m,m,0)$ of Sneiderman's three-parameter family $(x^{-1}y^nxy^{-(n+1)},\ x^{-1}y^axy^bx^{-1}y^c)$ (`MS_wA_reach_SnPres`).
+6. **Comparison bridge.** $\mathrm{MS}(n,w_A(m))$ is AC-equivalent, by one inversion and one conjugation, to the point $(a,b,c)=(-m,m,0)$ of the three-parameter family $P(n,a,b,c)=(x^{-1}y^nxy^{-(n+1)},\ x^{-1}y^axy^bx^{-1}y^c)$ used in Sneiderman's package (`MS_wA_reach_SnPres`).
 7. **Re-formalized known results.** MS(1,w), MS(n,w⋆), the $w_k$ equivalences, MS(2,$w_k$), AK(n) ~ MS(n,$w_1$), AK(2), MS(n,$w_k$) ~ P(n,k) (Shehper et al.; Myasnikov–Myasnikov–Shpilrain). Also invariance lemmas: AC moves preserve the normal closure; `Reachable` is symmetric; endomorphism transport.
 
 ## Argument (outline)
@@ -38,14 +38,21 @@ Full paper proofs are in `draft_writeup.md` §3–4.
 - **Build:** the official lakefile has `warningAsError = true`. There is no `sorry`, `admit` or `native_decide`.
 - **Axioms:** `#print axioms` was run on **59** theorems (`lean/ACProof/Check.lean`). All depend only on axioms from {`propext`, `Classical.choice`, `Quot.sound`}. 57 use exactly these three; `bs_pow` uses [`propext`]; `link_identity` uses [`propext`, `Quot.sound`].
 - **Reproduction:** `scripts/reproduce.sh` clones the official repo at the pinned commit and checks the sha256. It copies `lean/ACProof/` alongside, adds one `[[lean_lib]]` entry, builds, scans for sorry/admit, audits axioms, and prints `REPRODUCE OK`.
-- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1.log`. It ran on commit 0a76431; the submitted commit differs only in documentation.
+- **Log:** a fresh-clone run is saved in `logs/build_axioms_v1.1.log`. It ran on commit 0a76431. The submitted commit (tag `submission-v1.1.1`) has identical `lean/` and `scripts/`; it differs only in documentation, a LICENSE, and the removal of an unused stale root `ACProof/` copy.
 
 ## Contribution and prior work (honest scope)
 
-- **Implied by prior work.** R. Sneiderman, *Explicit Andrews–Curtis constructions for square presentations* (github.com/Robby955/ac-square-divisibility, public since 2026-09-12), uses the same official `AC.lean`.
-  - He proves `a_period`, `b_period`, `residue_solvable_iff`, `zero_a_solvable`, `zero_b_solvable`, `uniform_family`, `YInversion.solution` and `all_parameters_two`.
-  - With our bridge (item 6), these imply the AC-triviality content of items 2 and 3, and of item 1 at the level of triviality.
-  - This combination is a paper argument across two repositories; it was not compiled as one Lean project.
+- **Implied by prior work — in the repository behind SAIR ACC-P000002, not in that entry's stated claim.**
+  - **The published entry.** Rob Sneiderman, *Explicit AC constructions for divisibility subfamilies of square presentations*, SAIR ACC-P000002 (https://competition.sair.foundation/contributor-network/acc/ACC-P000002, published 2026-09-13). It claims explicit AC constructions for the square family $G(p,s)=(u^2y^{-(2s+1)},\ uy^puy^{-s}u^{-1}y^{-p})$ when $p\mid s$ or $p\mid s+1$. **Its stated claim is a different family and does not imply our results.**
+  - **Identifying the repository.** The entry lists no repository or commit. We identify its package as github.com/Robby955/ac-square-divisibility, tag v0.1.0 (commit `d0ed2c06bb3a9e7ed31e2f31e24d17de6323efe8`), on this evidence:
+    - the paper title is the same;
+    - the same $G(p,s)$ family;
+    - the same SAIR definition pin;
+    - the same 50/48 replay matrix;
+    - the release came 21 minutes before the entry was published.
+  - **Auxiliary Lean modules in that package.** It is built against the same official `AC.lean` and contains Lean modules on $P(n,a,b,c)$ that neither the entry nor its paper states as results: `a_period`, `b_period`, `residue_solvable_iff`, `zero_a_solvable`, `zero_b_solvable`, `uniform_family`, `YInversion.solution` and `all_parameters_two` (the files are unchanged at the current HEAD `b157f43f`).
+  - **What follows for us.** With our bridge (item 6), these modules imply the AC-triviality content of items 2 and 3, and of item 1 at the level of triviality.
+  - **How far this was checked.** This is a paper argument across two repositories. We read their statements but did not build their package or compile the combination.
   - Our proofs were developed independently, but we claim **no priority** for these statements.
   - The instances $m=\pm1,\pm5$ at $n=2$ are due to Myasnikov (1999) and Havas–Ramsay (2003).
 - **Known facts, independently formalized.**
@@ -53,8 +60,8 @@ Full paper proofs are in `draft_writeup.md` §3–4.
   - The re-formalized results in item 7. George and Zhao report an earlier Lean formalization of the Shehper et al. results, in their own framework (not the official `AC.lean`). Their repository is announced but not released.
   - The techniques are standard: automorphism invariance and conjugacy modulo a relator (Panteleev–Ushakov, Lemma 3.1, Thm 2.3).
 - **Possibly new (not found in the sources we checked; novelty not confirmed):**
-  - the AC-equivalence-of-presentations form of the period (Sneiderman's stated a-period passes through a triviality transfer);
-  - certified classes $m\equiv2,10 \pmod{12}$ at $n=3$ and $m\equiv2,6,14,18 \pmod{20}$ at $n=4$, which his stated theorems do not cover;
+  - the AC-equivalence-of-presentations form of the period (the a-period in that package passes through a triviality transfer);
+  - certified classes $m\equiv2,10 \pmod{12}$ at $n=3$ and $m\equiv2,6,14,18 \pmod{20}$ at $n=4$, which the theorems in that package do not cover;
   - the AK(4) link `MS4_wAm9_iff_AK4`;
   - the Lean bridge `MS_wA_reach_SnPres` itself.
   - Benchmark datasets we did not inspect (Fagan et al., Carreras) may contain the finite classes.
@@ -74,4 +81,4 @@ The Lean proofs, the search scripts and the drafting of this text were developed
 
 ## References
 
-Andrews–Curtis (1965); Akbulut–Kirby (1985); Miller–Schupp (1999); Myasnikov (1999); Myasnikov–Myasnikov–Shpilrain (2002, arXiv:math/0302080); Havas–Ramsay (2003); Panteleev–Ushakov (arXiv:1609.00325); Shehper et al. (arXiv:2408.15332v2); Lisitsa, J. Comput. Algebra 16 (2025) 100041; Fagan et al. (arXiv:2606.21611); Carreras (arXiv:2607.23611); R.J. George, "Formalizing the Andrews–Curtis conjecture" (blog, 2026); R. Sneiderman, github.com/Robby955/ac-square-divisibility. Detailed record: `NOVELTY.md`, `research/lit/`.
+Andrews–Curtis (1965); Akbulut–Kirby (1985); Miller–Schupp (1999); Myasnikov (1999); Myasnikov–Myasnikov–Shpilrain (2002, arXiv:math/0302080); Havas–Ramsay (2003); Panteleev–Ushakov (arXiv:1609.00325); Shehper et al. (arXiv:2408.15332v2); Lisitsa, J. Comput. Algebra 16 (2025) 100041; Fagan et al. (arXiv:2606.21611); Carreras (arXiv:2607.23611); R.J. George, "Formalizing the Andrews–Curtis conjecture" (blog, 2026); R. Sneiderman, SAIR ACC-P000002 (https://competition.sair.foundation/contributor-network/acc/ACC-P000002), package github.com/Robby955/ac-square-divisibility @ v0.1.0. Detailed record: `NOVELTY.md`, `research/lit/`.

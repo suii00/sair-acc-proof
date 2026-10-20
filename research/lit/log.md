@@ -47,4 +47,12 @@ different approaches. This executor cannot launch subagents, so **I ran both app
   accordingly (see NOVELTY.md §v1.1).
 - No background processes left from this research (the Lean build and reproduce run are separate; see the build logs).
 
+## Round 2 (2026-10-21 ~07:00 JST) — triggered by the user pointing to SAIR ACC-P000002
+- curl of the entry page; data taken from the embedded JSON (contributor-network-item). Saved to
+  sources/sair-ACC-P000002-entry.md.
+- Its title differs from the one I cited, and its claim covers only G(p,s). It has no commit and no repo link.
+- Cloned the repo at v0.1.0 (d0ed2c06): the paper title equals the entry title. The MS-family modules are identical to
+  HEAD, but they are not stated in the entry or the paper.
+- Decision: re-scope "implied by" to the repository behind the entry, not the published claim (NOVELTY.md §B′).
+
 ## Feedback from the user (verbatim, to be appended when given)

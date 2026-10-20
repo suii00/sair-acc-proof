@@ -82,6 +82,32 @@ https://openreview.net/forum?id=lt3Lpa4d2d (full text not retrieved: bot check).
 - Their PRIOR_WORK.md cites Shehper, Myasnikov, Lisitsa, Bridson, Panteleev–Ushakov, Lackenby, Zhang et al., Fagan et al.
   and Carreras, and disclaims novelty of substitution/automorphism techniques.
 
+### B′. Correction (2026-10-21 JST): the published SAIR entry vs the repository
+- **The entry:** SAIR ACC-P000002, Rob Sneiderman, "Explicit AC constructions for divisibility subfamilies of square
+  presentations", https://competition.sair.foundation/contributor-network/acc/ACC-P000002.
+  - Published 2026-09-13T00:19:51Z (09:19 JST). AC / proof / partial, versionId 2.
+  - It has no commitHash and gives no repo link.
+- **What it claims:** only results on G(p,s) = (u²y^{-(2s+1)}, u y^p u y^{-s} u⁻¹ y^{-p}): p | s or s+1, all G(2,s), and
+  G(3,3m+1) reduced to an open restoration condition. Its stated claim does not imply our results.
+- **Identifying the package:** github.com/Robby955/ac-square-divisibility tag v0.1.0
+  = d0ed2c06bb3a9e7ed31e2f31e24d17de6323efe8, released 2026-09-12T23:58Z. The evidence:
+  - the v0.1.0 paper title equals the entry title;
+  - same G(p,s);
+  - same SAIR pin 99a65377;
+  - same 50/48 replay matrix;
+  - the release came 21 minutes before publication.
+- **The title I cited earlier** ("…for square presentations") is the README heading of the later v0.2.0-rc1 HEAD
+  b157f43f.
+- **Where the MS-family theorems live:** the P(n,a,b,c) theorems I relied on (`a_period`, `b_period`,
+  `residue_solvable_iff`, `zero_*`, `uniform_family`, `YInversion.solution`, `all_parameters_two`) are in v0.1.0 with
+  blobs identical to HEAD. They are built as part of the package (ACSquareFamily imports ACResidueClasses).
+  - They are NOT stated in the entry text.
+  - The v0.1.0 paper only defines P(n,a,b,c) and the dictionary to G(p,s). It says its height-3/4 consequences give
+    "particular slices, not the full three-parameter families".
+- **Corrected framing:** the implied-by analysis holds against the repository package behind ACC-P000002, not against
+  the entry's stated claim.
+- **Not done:** I have not built their package; that their modules compile is their claim.
+
 ### C. Lisitsa 2025 correction
 - arXiv:2501.18601v1 (17 Jan 2025) abstract: AK(3) "is stably AC-equivalent to the trivial presentation".
 - Published version: J. Comput. Algebra 16 (2025) 100041, doi:10.1016/j.jaca.2025.100041 (online 2025-10-15). Its
