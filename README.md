@@ -1,4 +1,4 @@
-# sair-acc-proof — SAIR Andrews–Curtis Challenge, Proof Track (research repo, private)
+# sair-acc-proof — SAIR Andrews–Curtis Challenge, Proof Track (research repo)
 
 Lean 4 formalization of AC-triviality results for Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}),
 checked against the **unmodified** official statement `AC.lean` of
