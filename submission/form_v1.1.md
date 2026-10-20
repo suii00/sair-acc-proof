@@ -1,7 +1,7 @@
 # SAIR ACC Proof Track — "Create Submission" form draft (v1.1)
 
-Based on tag `submission-v1.1` → commit `4a5644e73f945b7a14ea85d9660a6240baec4ac6` (private repo suii00/sair-acc-proof).
-**Status: DRAFT. Not submitted.** The repo visibility is unchanged (private).
+Based on tag `submission-v1.1` → commit `4a5644e73f945b7a14ea85d9660a6240baec4ac6` (repo suii00/sair-acc-proof).
+**Status: DRAFT. Not submitted.**
 
 ## Title
 Lean-verified AC-triviality for Miller–Schupp MS(n, y^-m x y^m x^-1): period, n=2, partial n=3,4, AK links
@@ -108,12 +108,14 @@ Andrews–Curtis (1965); Akbulut–Kirby (1985); Miller–Schupp (1999); Myasnik
 - Repository link: https://github.com/suii00/sair-acc-proof
 - Commit SHA (40 chars): 4a5644e73f945b7a14ea85d9660a6240baec4ac6
 
-> ⚠ The repo is currently **PRIVATE**. The form requires a public repo for this field. Either:
-> - make it public (the user's decision; not done here), and then use the SHA above; or
-> - leave this field empty.
->
-> If the repo goes public, `research/lit/sources/` is gitignored, so no third-party full texts are committed. Note that
-> `report.html` does contain short quoted excerpts.
+> Note (checked 2026-10-21 06:5x JST): the repo is now **PUBLIC**. The user changed this; I did not.
+> - `4a5644e7…` is the tagged, reproduce-verified v1.1 commit. It predates the user's LICENSE / README PR (#1, merge
+>   fa920f9).
+> - If the submission should include the Apache-2.0 LICENSE, use the current main head instead. That head changes no
+>   Lean or script files relative to the build-verified Lean content of 0a76431. It is a different SHA, so it would
+>   need its own decision and possibly its own tag.
+> - `research/lit/sources/` is gitignored, so no third-party full texts are in the repo. `report.html` contains short
+>   quoted excerpts.
 
 ## arXiv / Paper link (optional)
 (leave empty — no paper posted)
