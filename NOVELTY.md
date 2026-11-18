@@ -68,11 +68,12 @@ https://openreview.net/forum?id=lt3Lpa4d2d (full text not retrieved: bot check).
     proved by one-relator conjugacy. Their a-period goes through the shear, so their stated theorems give only the
     triviality iff. The AC-equivalence refinement is the only part not literally covered; it is a minor refinement, and
     whether their path lemmas also give it was not checked.
-  - **n = 3, 4 certified residues:** our solved residues map to their grid cells (a mod n, b mod n+1) by CRT.
+  - **n = 3, 4, 5 certified residues:** our solved residues map to their grid cells (a mod n, b mod n+1) by CRT.
     - Cells their stated theorems cover: a ≡ 0, b ≡ 0, (n−1, 1), (1, n). For n = 3 that is m ≡ 0,1,3,4,6,8,9,11 (mod 12);
-      for n = 4, m ≡ 0,1,4,5,8,10,12,15,16,19 (mod 20).
+      for n = 4, m ≡ 0,1,4,5,8,10,12,15,16,19 (mod 20); for n = 5, m ≡ 0,1,5,6,10,12,15,18,20,24,25,29 (mod 30).
     - **Cells only we certify** (by Lean-checked search paths): n = 3, m ≡ 2, 10 (cells (1,2), (2,2)); n = 4,
-      m ≡ 2, 6, 14, 18 (cells (2,2), (2,1), (2,4), (2,3)).
+      m ≡ 2, 6, 14, 18 (cells (2,2), (2,1), (2,4), (2,3)); n = 5, m ≡ 2, 3, 9, 21, 27, 28
+      (cells (3,2), (2,3), (1,3), (4,3), (3,3), (2,4)).
     - I found none of these in their Lean files (`presentation 3`/`presentation 4` occur nowhere) or README. Their paper
       was only keyword-searched. Status: not found in the sources checked; finite instances (Fagan/Shehper benchmark
       tables may contain them).
@@ -179,6 +180,7 @@ x⁻¹y⁻¹x²y⁻¹, i.e. the relation x = y⁻¹x²y⁻¹. So **MS(3, wA 5) i
 | `MS_wA_cover`, `MS_wA_mult`, `MS_wA_mult_succ`, `MS_wA_pm_one` | **novelty unconfirmed; corollary-level** | Short arguments from standard lemmas. Finitely many instances appear as "trivial" in the Shehper/Fagan benchmark tables. No infinite-family statement found. |
 | `MS_wA_negate` (y ↦ y⁻¹ transfer) | **KNOWN principle** | Automorphism invariance of AC-triviality: PU Lemma 3.1 with its citations; Lisitsa 2025; Carreras 2026 uses the same σ. |
 | `MS2_wA_all` / `MS2_wA_all'` (n = 2, all m) | **novelty unconfirmed; instances known** | The m ≡ ±1, ±5 instances (length 12) are in Myasnikov 1999 / Havas–Ramsay 2003, and benchmark instances are trivial in Shehper/Fagan. I found no statement for all m ∈ ℤ. |
+| `MS5_wA` (n = 5; m mod 30 ∉ {4,7,8,11,13,14,16,17,19,22,23,26}) | **novelty unconfirmed; not found in the sources checked** | Sneiderman's stated theorems cover exactly the complementary 12 classes at n = 5. Mulay's ACC-P000013 (read in full 2026-11-18) treats only the line w = w_A(1), quantitatively (explicit Θ(2^n) trivializations, a record law, a matrix lower bound), with no Lean formalization and no residue classification. The Shehper/Fagan benchmark tables were not checked for n = 5 instances, so finite instances may exist there. The pair m ≡ ±11 (mod 30), containing the cell (1,1) at n = 5, was not solved; no AK(5) link is claimed. |
 
 **Recommended wording for the manuscript:**
 - Present the AK(3) link as an independent formal proof of a known fact, citing Shehper et al. v2 §3 and Carreras 2026 Thm 4.

@@ -1,12 +1,12 @@
-# Submission candidate v1.1 — Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}): Lean formalization against the official definitions, with prior-art accounting
+# Submission candidate v1.2 — Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}): Lean formalization against the official definitions, with prior-art accounting
 SAIR Andrews–Curtis Challenge, Proof Track. Conjecture: **AC**. Direction: **proof**, as a *partial result*.
 No claim is made about the full conjecture. Status: candidate, NOT submitted.
 
 Every theorem below is kernel-checked in Lean 4 (v4.29.1, Mathlib 5e932f97) against the UNMODIFIED official
 `competition/tools/lean/AC.lean` of SAIRcompetition/Andrews-Curtis @ a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
 (`AC.Reachable`, `AC.standard`; sha256 927ba318…). The build uses warningAsError and has no `sorry`/`admit`/`native_decide`.
-`#print axioms` over all 59 audited theorems shows only axioms from {propext, Classical.choice, Quot.sound}: 57 use exactly
-these three; `bs_pow` uses [propext] and `link_identity` uses [propext, Quot.sound]. See `logs/build_axioms_v1.1.log` and
+`#print axioms` over all 66 audited theorems shows only axioms from {propext, Classical.choice, Quot.sound}: 64 use exactly
+these three; `bs_pow` uses [propext] and `link_identity` uses [propext, Quot.sound]. See `logs/build_axioms_v1.2.log` and
 `scripts/reproduce.sh`.
 
 **What changed since v1 (honest scope).**
@@ -17,8 +17,14 @@ these three; `bs_pow` uses [propext] and `link_identity` uses [propext, Quot.sou
 - **Consequently, the triviality content of our period theorem, MS_wA_cover and the n = 2 all-m theorem is NOT new.** It
   follows from Sneiderman's stated theorems (§2c, §5b).
 - v1.1 therefore does not present these as "not found in the literature". What remains possibly new is small: Lean
-  certificates for certain finite residue cells at n = 3, 4 (§2d); the AK(4) link (novelty unconfirmed); and the
+  certificates for certain finite residue cells at n = 3, 4, 5 (§2d); the AK(4) link (novelty unconfirmed); and the
   AC-equivalence (rather than triviality-iff) form of the period.
+- **What changed in v1.2.** The n = 5 case of Theorem 4: certified search paths for six further residue cells at
+  n = 5 (m ≡ 2, 3, 9, 21, 27, 28 mod 30), giving `MS5_wA` (18 of the 30 classes at n = 5). Prior-art check for
+  these cells (2026-11-18): Sneiderman's stated theorems cover exactly the complementary 12 classes at n = 5, as
+  at n = 3, 4; Mulay's Contributor Network entry ACC-P000013 treats only the single line w = w_A(1), quantitatively
+  (move counts and a lower bound), with no Lean formalization and no residue classification. Novelty of the six
+  cells is NOT confirmed: the benchmark tables (Shehper/Fagan) were not checked for n = 5 instances.
 - The AK(3)/AK(4) links are presented as independent formal proofs (§2b): the AK(3) one of a known fact, the AK(4) one
   of a fact whose novelty is unconfirmed.
 
@@ -56,13 +62,13 @@ Ours is an independent proof.
 *Prior art:* implied by Sneiderman's `zero_a_solvable`, `zero_b_solvable`, `uniform_family` (the cell (n−1, 1)) and
 `YInversion.solution`.
 
-**Theorem 4 (n = 3, 4; certified search paths).** `MS3_wA`: AC-trivial for m mod 12 ∉ {5, 7}. `MS4_wA`: AC-trivial for
-m mod 20 ∉ {3, 7, 9, 11, 13, 17}.
+**Theorem 4 (n = 3, 4, 5; certified search paths).** `MS3_wA`: AC-trivial for m mod 12 ∉ {5, 7}. `MS4_wA`: AC-trivial for
+m mod 20 ∉ {3, 7, 9, 11, 13, 17}. `MS5_wA`: AC-trivial for m mod 30 ∉ {4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26}.
 *Prior art:*
-- The cells covered by Sneiderman's general theorems are m ≡ 0,1,3,4,6,8,9,11 (mod 12) and m ≡ 0,1,4,5,8,10,12,15,16,19
-  (mod 20).
-- **Only our Lean-checked paths cover** m ≡ 2, 10 (mod 12) and m ≡ 2, 6, 14, 18 (mod 20). I did not find these in the
-  sources checked.
+- The cells covered by Sneiderman's general theorems are m ≡ 0,1,3,4,6,8,9,11 (mod 12), m ≡ 0,1,4,5,8,10,12,15,16,19
+  (mod 20) and m ≡ 0,1,5,6,10,12,15,18,20,24,25,29 (mod 30).
+- **Only our Lean-checked paths cover** m ≡ 2, 10 (mod 12), m ≡ 2, 6, 14, 18 (mod 20) and m ≡ 2, 3, 9, 21, 27, 28
+  (mod 30). I did not find these in the sources checked.
 - These are finite base cases (each one presentation plus periodicity). Benchmark tables may contain them.
 
 **Theorem 5 (AK links; independent formal proofs).**
@@ -125,11 +131,15 @@ George–Zhao, in their own framework and not against the official AC.lean, repo
 |---|---|---|
 | Thm 4, n = 3 (new cells m ≡ 2, 10 mod 12) | `MS3_wA` (bases `MS3_wA_m10`, `MS3_wA_m2`, `MS3_wA_m1`) | N3 |
 | Thm 4, n = 4 (new cells m ≡ 2, 6, 14, 18 mod 20) | `MS4_wA` (bases `MS4_wA_m2`, `_m6`, `_m14` [m=−6], `_m18` [m=−2], `_m19` [m=−1]) | N4 |
+| Thm 4, n = 5 (new cells m ≡ 2, 3, 9, 21, 27, 28 mod 30) | `MS5_wA` (bases `MS5_wA_m2`, `_m3`, `_m27` [m=−3], `_m28` [m=−2], `_m9` [m=−21], `_m21` [m=−9]) | N5 |
 
 ### 2e. Unproven (open; no claim)
 - MS(3, wA m) for m ≡ ±5 mod 12 is unproven. It is equivalent in triviality to AK(3).
 - MS(4, wA m) for m ≡ ±3, ±7 mod 20 is unproven. So is m ≡ ±9 mod 20, which is equivalent to AK(4).
-- MS(n, wA m) for n ≥ 5 outside Theorem 3, and AK(n) for n ≥ 3, are unproven.
+- MS(5, wA m) for m ≡ 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26 (mod 30) is unproven. The pair m ≡ ±11 (mod 30)
+  contains the cell (1, 1) at n = 5 (m ≡ 19) and its negation; whether it is equivalent in triviality to AK(5) has
+  NOT been checked and is not claimed.
+- MS(n, wA m) for n ≥ 6 outside Theorem 3, and AK(n) for n ≥ 3, are unproven.
 - No stable-AC statement is made or used. Lisitsa's 2025 stable AK(3) claim was withdrawn in the published version (§5).
 - The AC conjecture itself is not addressed.
 - Search failures (§6) are NOT evidence of non-triviality.
@@ -228,7 +238,8 @@ The n = 3, 4 bases (52/21/45 and 25/49/50/26/132 moves) were found by greedy sea
   project.
 - *What remains different.*
   - Our period is an AC-equivalence of presentations.
-  - Our n = 3, 4 certificates cover the cells (1,2), (2,2) at n = 3 and (2,1)–(2,4) at n = 4. Their stated theorems do
+  - Our n = 3, 4, 5 certificates cover the cells (1,2), (2,2) at n = 3, (2,1)–(2,4) at n = 4 and (3,2), (2,3),
+    (3,3), (2,4), (1,3), (4,3) at n = 5. Their stated theorems do
     not cover these cells.
   - Our AK(3)/AK(4) links concern the cell (1,1).
 - *Their own novelty statement.* Their PRIOR_WORK.md disclaims novelty of substitution and automorphism techniques.
@@ -247,5 +258,10 @@ his research supplements. Full record: NOVELTY.md and research/lit/ (map.md, log
 - Identity search: using a Britton-reduction word-problem solver for BS(3,4), no G-conjugacy r1(m) ~ r1(m')^{±1}
   links residues {1,2,5,7,10,11} to any other residue (conjugators up to length 7, |m'| ≤ 40). So the period and ψ-symmetry
   appear to be the only cheap reductions of this "relator-1-conjugacy" type.
+- n = 5 (2026-11-18): the line-wise best-first search (`search/classes.py`, maxlen 30, up to 8 reduced
+  representatives per class) solved the pairs m ≡ ±2 (52 moves) and m ≡ ±3 (30 moves) already at a 200k-state
+  budget; a full 2M-state pass over all classes additionally solved m ≡ ±9 (96 moves, representative m = −21)
+  and m ≡ ±21 (44 moves, representative m = −9), and found no path for the pairs {4, 26}, {7, 23}, {8, 22},
+  {11, 19}, {13, 17}, {14, 16} (mod 30).
 
 

@@ -2,6 +2,7 @@ import ACProof.MS2All
 import ACProof.MS2Alt
 import ACProof.N3
 import ACProof.N4
+import ACProof.N5
 import ACProof.AK3Link
 import ACProof.AK4Link
 import ACProof.Comparison
@@ -66,3 +67,10 @@ import ACProof.Comparison
 #print axioms AC.MS4_wA_9_11_of_AK4
 #print axioms AC.MS_wA_reach_SnPres
 #print axioms AC.SnPres_reach_MS_wA
+#print axioms AC.MS5_wA_m2
+#print axioms AC.MS5_wA_m3
+#print axioms AC.MS5_wA_m27
+#print axioms AC.MS5_wA_m28
+#print axioms AC.MS5_wA_m9
+#print axioms AC.MS5_wA_m21
+#print axioms AC.MS5_wA
