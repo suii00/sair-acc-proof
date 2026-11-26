@@ -5,6 +5,7 @@ import ACProof.N4
 import ACProof.N5
 import ACProof.AK3Link
 import ACProof.AK4Link
+import ACProof.AKFamily
 import ACProof.Comparison
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
@@ -74,3 +75,8 @@ import ACProof.Comparison
 #print axioms AC.MS5_wA_m9
 #print axioms AC.MS5_wA_m21
 #print axioms AC.MS5_wA
+#print axioms AC.MS_wA_reach_AK
+#print axioms AC.MS_wA_period_reach_AK
+#print axioms AC.MS_wA_pm_iff_AK
+#print axioms AC.MS5_wA_19_reach_AK5
+#print axioms AC.MS5_wA_11_19_iff_AK5
