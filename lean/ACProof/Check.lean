@@ -8,6 +8,8 @@ import ACProof.AK4Link
 import ACProof.AKFamily
 import ACProof.Comparison
 import ACProof.EuclideanWitness
+import ACProof.AKProjective
+import ACProof.AK1Distance
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
 #print axioms AC.reach_mul_normalClosure
@@ -117,3 +119,29 @@ import ACProof.EuclideanWitness
 #print axioms AC.AK_identityExponentMatrix_witness
 #print axioms AC.AK_identityFiber_exact
 #print axioms AC.AK_to_standard_length
+
+#print axioms AC.runMoves_append
+#print axioms AC.conjCount_append
+#print axioms AC.PrimitiveMove.step
+#print axioms AC.Step.exists_primitiveMove
+#print axioms AC.runMoves_reachable
+#print axioms AC.reachable_iff_exists_runMoves
+#print axioms AC.AK1_twoConjugations_witness
+#print axioms AC.AK1Certificate.lower
+#print axioms AC.AK1_conjCount_lower
+#print axioms AC.commute_sq_of_mem_closure_involutions
+#print axioms AC.exists_involutions_of_atMostOneConj
+#print axioms AC.two_le_conjCount_of_involutionImage
+#print axioms AC.AK_length_add_conjCount
+#print axioms AC.AK_length_of_two_conjugations
+#print axioms AC.AK1_conjCount_exact
+#print axioms AC.AK_two_conjugations
+#print axioms AC.AK_length_add_six
+#print axioms AC.mulCount_append
+#print axioms AC.AK1Certificate.evalX
+#print axioms AC.AK1Certificate.evalY
+#print axioms AC.AK_operation_bounds
+#print axioms AC.AK1_mulCount_lower
+#print axioms AC.AK1_mulCount_odd
+#print axioms AC.AK1_min_operation_counts
+#print axioms AC.AK1_distance_exact

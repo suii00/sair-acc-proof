@@ -1,8 +1,14 @@
 # sair-acc-proof — SAIR Andrews–Curtis Challenge, Proof Track (research repo)
 
-Lean 4 formalization of AC-triviality results for Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}),
+Lean 4 formalization of AC paths for Miller–Schupp presentations and lower bounds on ordinary moves for the Akbulut–Kirby family,
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
+
+## Conjugations in ordinary Akbulut–Kirby trivializations
+
+The ordered pair $\mathrm{AK}(1)$ requires exactly two conjugations to reach $(x,y)$ under the official ordinary moves. Its shortest ordinary path has length nine. One path simultaneously minimizes all three counts with five right multiplications, two inversions and two conjugations. For every $n\ge1$, any ordinary trivialization of $\mathrm{AK}(n)$ needs at least two arbitrary-word conjugations and $n+6$ total moves. [Submission text and proofs](submission/description_ak_conjugations.md) · [Four-point certificate](lean/ACProof/AK1ConjLower.lean) · [Nine-move witness](lean/ACProof/AK1ConjUpper.lean) · [Shortestness](lean/ACProof/AK1Distance.lean) · [Uniform theorem](lean/ACProof/AKProjective.lean) · [Build log](logs/build_ak_conjugations.log)
+
+Use `scripts/reproduce.sh` for the full Lean build, or `python3 research/ak1-conjugations/check.py` to replay the free-group path and check the finite images in Python.
 
 ## Directed distance for the Akbulut–Kirby exponent matrix
 
