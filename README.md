@@ -3,51 +3,42 @@
 Lean 4 formalization of AC-triviality results for Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}),
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
-The manuscript is in `draft_writeup.md`. It contains the main theorems, paper proofs, a theorem ↔ Lean table, the classification
-(known / corollary / under novelty investigation / unproven), and sources.
 
-## Main results (submission candidate v1.1) and prior-art status
-**Read NOVELTY.md §v1.1 first.** R. Sneiderman's public Lean repo (github.com/Robby955/ac-square-divisibility, 2026-09-12,
-same official AC.lean) proves results that imply the AC-triviality content of our period, `MS_wA_cover` and n = 2
-theorems. Our `MS_wA_reach_SnPres` (Comparison.lean) gives the correspondence.
-- **Period (all n):** MS(n, wA m) ~ MS(n, wA(m + t·n(n+1))) (`MS_wA_period_mul`). The triviality consequence is implied by
-  [Sn]. Our statement is the AC-equivalence-of-presentations form.
-- **n = 2, all m ∈ ℤ:** MS(2, wA m) is AC-trivial (`MS2_wA_all'`, `MS2_wA_all`). Implied by [Sn] `all_parameters_two`;
-  the m = ±1, ±5 instances are due to Myasnikov / Havas–Ramsay.
-- **All n:** AC-trivial for m ∈ nℤ ∪ (n+1)ℤ ∪ (±1 + n(n+1)ℤ) (`MS_wA_cover`). Implied by [Sn].
-- **AC-triviality transfer:** `MS_wA_negate` (y ↦ y⁻¹). This is a known principle and NOT an AC path.
-- **n = 3:** AC-trivial unless m ≡ ±5 mod 12 (`MS3_wA`). **n = 4:** AC-trivial unless m ≡ ±3, ±7, ±9 mod 20 (`MS4_wA`).
-  The cells m ≡ 2, 10 (mod 12) and m ≡ 2, 6, 14, 18 (mod 20) were not found in the sources checked.
-- **AK links (independent formal proofs):** MS(3, wA 5) triv ⇔ AK(3) triv (`MS3_wA5_iff_AK3`, known: Shehper v2 §3,
-  Carreras Thm 4); MS(4, wA(−9)) triv ⇔ AK(4) triv (`MS4_wAm9_iff_AK4`, novelty unconfirmed).
-- No stable-AC statement is used. Lisitsa's stable AK(3) claim was withdrawn in J. Comput. Algebra 16 (2025) 100041.
+## v1.3 submission candidate
 
-## Reproducing (clean environment)
-Requirements: `git`, `elan` (Lean toolchain manager), network access. From the repo root:
+For every $n\in\mathbb N$ and $t\in\mathbb Z$, the ordered presentation $\mathrm{MS}(n,w_A(m))$ reaches $\mathrm{AK}(n)$ by ordinary Andrews–Curtis moves when $m=-(2n+1)+tn(n+1)$. For $m=\pm(2n+1)+tn(n+1)$, the two presentations have equivalent AC-triviality. For $n>0$ these are residue classes modulo $n(n+1)$. In the classical range $n\ge2$ the proof identifies an explicit parameter in the theorems of Sneiderman, Shehper et al., and Myasnikov–Myasnikov–Shpilrain. [Lean proof](lean/ACProof/AKFamily.lean) · [Manuscript](draft_writeup.md)
+
+At $n=5$ the conclusions depend on the residue of $m$ modulo 30.
+
+| Residues | Result | Evidence |
+|---|---|---|
+| 0, 1, 5, 6, 10, 12, 15, 18, 20, 24, 25, 29 | AC-trivial | General families in `MS_wA_cover` |
+| 2, 3, 9, 21, 27, 28 | AC-trivial | Six Lean path certificates for short representatives already covered by Fagan et al. |
+| 11, 19 | AC-trivial iff AK(5) is | `MS5_wA_11_19_iff_AK5` for both classes and an ordinary path to AK(5) throughout class 19 |
+| 4, 26 | AC-trivial by published benchmark results and reduction | Literature comparison only |
+| 7, 8, 13, 14, 16, 17, 22, 23 | AC-triviality undecided here | — |
+
+`MS5_wA` certifies the first two rows, **18 of the 30 classes**, for every integer in those classes. The earlier submission, ACC-P000018, contains the period, the complete $n=2$ result, partial $n=3,4$ results and two specialized AK transfers. The v1.3 manuscript gives the theorem-to-code correspondence and the benchmark matches. [Earlier SAIR entry](https://competition.sair.foundation/contributor-network/acc/ACC-P000018) · [Prior-art record](NOVELTY.md) · [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+## Reproduction
+
+With Git, elan and network access, run this command from the repository root.
+
+```sh
+scripts/reproduce.sh
 ```
-scripts/reproduce.sh [WORKDIR]
-```
-The script clones the official repo at the pinned commit and checks the sha256 of `AC.lean`. It copies `lean/ACProof/` next to
-`AC.lean` and appends a single `[[lean_lib]] ACProof` entry to `lakefile.toml`; nothing else in the official repo changes. The
-official lakefile already sets `warningAsError = true`. It then runs `lake exe cache get` and `lake build AC ACProof`, scans for
-`sorry`/`admit`, and runs `#print axioms` on all theorems listed in `lean/ACProof/Check.lean`. It ends with `REPRODUCE OK`
-only if every theorem depends on a subset of `{propext, Classical.choice, Quot.sound}`.
-Logs of runs from a fresh clone: `logs/build_axioms_v1.log` (v1, 48 theorems) and `logs/build_axioms_v1.1.log`
-(v1.1, 59 theorems: 57 use exactly the three axioms, `bs_pow` uses [propext], `link_identity` uses [propext, Quot.sound]).
-`logs/build_axioms_v1.1_3ff15e7.log` is a rerun at commit 3ff15e7 (Lean sources identical to v1.1): REPRODUCE OK, same
-59 theorems and axioms.
 
-## Layout
-- `lean/ACProof/` — Lean sources. Dependency order: Consequence → MillerSchupp, Basic → MS1 → MSwk → MS2 → AK → NewFamilies
-  → Period → (Tactics) → General → {MS2Alt, N3, N4}; N3 → AK3Link → AK4Link (also imports N4); NewFamilies → Comparison;
-  MS2All imports NewFamilies only. General lemmas never import instance files. `Check.lean` imports everything.
-- `scripts/reproduce.sh`, `logs/` — reproducibility.
-- `NOVELTY.md`, `research/lit/` — prior-art record (imozuru method: map.md, log.md, extracts.json, report.html; the
-  source copies in `research/lit/sources/` are gitignored). `research/n3-m5/` — n = 3/4 research log (merged from the
-  branch).
-- `search/`, `search2/` — search and emission scripts and raw outputs (experiments, not results).
-- `literature.md`, `themes.md`, `STATUS_round*.md` — research records (historical; rounds 6–7 use "~" loosely for
-  "AC-triviality equivalent"; the manuscript and this README are authoritative).
+The script fetches the pinned official Lean project, verifies the SHA-256 of `AC.lean`, overlays `lean/ACProof/`, and runs the build with warnings treated as errors. Its axiom audit checks every declaration named in `Check.lean` against `propext`, `Classical.choice`, and `Quot.sound`. It prints `REPRODUCE OK` on success. [Reproduction script](scripts/reproduce.sh) · [Audit declarations](lean/ACProof/Check.lean)
+
+On 27 November 2026 (JST), Open Math OS ran the script from a clean checkout of proof commit `f2ba667089229bcc4a1c0c0576c407c9ac3794c9` with Lean 4.29.1 and Mathlib `5e932f97`. All 71 audited theorems passed. The five AK family declarations each depend on `propext`, `Classical.choice` and `Quot.sound`. The run exited with code 0. An independent macOS build of the same commit produced the same 71 audit results. [Open Math OS full build log](logs/build_axioms_v1.3.log) · [Audited proof commit](https://github.com/suii00/sair-acc-proof/commit/f2ba667089229bcc4a1c0c0576c407c9ac3794c9)
+
+The v1.2 Open Math OS verification recorded 66 declarations. Earlier raw logs cover v1.1 and its documentation-only update. [v1.2 verification record](logs/build_axioms_v1.2_os-verification.md) · [v1.1 raw log](logs/build_axioms_v1.1_3ff15e7.log)
+
+## Repository guide
+
+- `lean/ACProof/` contains the proofs. `Period.lean` supplies paths between periodic translates, `N5.lean` contains the six search certificates, and `AKFamily.lean` proves the uniform AK result.
+- `submission/` holds the Proof Track form and descriptions. `draft_writeup.md` contains the paper proofs and references.
+- `search/` and `search2/` contain exploratory programs and output. `research/` and the dated `STATUS_round*.md` files preserve prior-art and search history.
 
 ## License
 Licensed under the [Apache License 2.0](LICENSE), the same license as the official

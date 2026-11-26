@@ -1,0 +1,266 @@
+== v1.3 official clean reproduction (commit f2ba667089229bcc4a1c0c0576c407c9ac3794c9)
+== log format distinguishes this run from logs/build_axioms_v1{,.1,1_3ff15e7}.log (v1.x gates)
+== date(UTC): 2026-11-26T17:50:54Z
+== host: x86_64 nproc=4 mem=15GB disk_free=187G
+== bundle: attachments/sair-acc-proof-miller-schupp-ms-dbdf/sair-acc-v13-proof.bundle
+== clean checkout: /workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/repo
+== checkout HEAD: f2ba667089229bcc4a1c0c0576c407c9ac3794c9
+== checkout status --porcelain: []
+== toolchain: Lean (version 4.29.1, x86_64-unknown-linux-gnu, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)
+== lake: Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+== leantar: leantar 0.1.20
+== command: scripts/reproduce.sh /workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work
+
+== workdir: /workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work
+== research repo: f2ba667089229bcc4a1c0c0576c407c9ac3794c9
+== official commit: a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
+AC.lean: OK
+== official lakefile has warningAsError = true
+== diff vs official (tracked files):
+ competition/tools/lean/lakefile.toml | 4 ++++
+ 1 file changed, 4 insertions(+)
+== toolchain: leanprover/lean4:v4.29.1
+Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+info: ACStatement: no previous manifest, creating one from scratch
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision '5e932f97dd25535344f80f9dd8da3aab83df0fe6'
+info: toolchain not updated; already up-to-date
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision '83e90935a17ca19ebe4b7893c7f7066e266f50d3'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision 'c5d5b8fe6e5158def25cd28eb94e4141ad97c843'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision '48d5698bc464786347c1b0d859b18f938420f060'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '4dd0959c44d1af0462bd604d0f87c5781307d709'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '7152850e7b216a0d409701617721b6e469d34bf6'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision '707efb56d0696634e9e965523a1bbe9ac6ce141d'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '756e3321fd3b02a85ffda19fef789916223e578c'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '7802da01beb530bf051ab657443f9cd9bc3e1a29'
+info: mathlib: running post-update hooks
+✔ [2/22] Built Cache.Init (256ms)
+✔ [3/22] Built Cache.Lean (305ms)
+✔ [4/22] Built Cache.Init:c.o (125ms)
+✔ [7/22] Built Cache.Lean:c.o (116ms)
+✔ [8/22] Built Batteries.Data.String.Basic (318ms)
+✔ [9/22] Built Batteries.Data.String.Basic:c.o (96ms)
+✔ [10/22] Built Batteries.Data.Array.Match (674ms)
+✔ [11/22] Built Batteries.Data.Array.Match:c.o (300ms)
+✔ [12/22] Built Batteries.Data.String.Matcher (374ms)
+✔ [13/22] Built Cache.IO (1.4s)
+✔ [14/22] Built Batteries.Data.String.Matcher:c.o (204ms)
+✔ [15/22] Built Cache.Hashing (592ms)
+✔ [16/22] Built Cache.Hashing:c.o (661ms)
+✔ [17/22] Built Cache.IO:c.o (1.4s)
+✔ [18/22] Built Cache.Requests (1.3s)
+✔ [19/22] Built Cache.Main (472ms)
+✔ [20/22] Built Cache.Main:c.o (456ms)
+✔ [21/22] Built Cache.Requests:c.o (1.4s)
+✔ [22/22] Built cache:exe (698ms)
+PANIC at String.Slice.toNat! Init.Data.String.Slice:968:4: Nat expected
+backtrace:
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0x66b78a3) [0x63c0f9ae58a3]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0x66aec87) [0x63c0f9adcc87]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0x66aed0c) [0x63c0f9adcd0c]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0xa2fc10) [0x63c0f3e5dc10]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0xa30700) [0x63c0f3e5e700]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0xa252f8) [0x63c0f3e532f8]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0x66bcade) [0x63c0f9aeaade]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0xa296e4) [0x63c0f3e576e4]
+/usr/lib/x86_64-linux-gnu/libc.so.6(+0x2a601) [0x7aea1cc2a601]
+/usr/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x88) [0x7aea1cc2a718]
+/workspace/nucleus/work/projects/p-16764613ac5a4732871a91dfb31065e7/repo/.scratch/v13-clean.390336/work/Andrews-Curtis/competition/tools/lean/.lake/packages/mathlib/.lake/build/bin/cache(+0xa20aea) [0x63c0f3e4eaea]
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+  0      0   0      0   0      0      0      0                              0100  1.09M 100  1.09M   0      0  2.69M      0                              0100  1.09M 100  1.09M   0      0  2.69M      0                              0100  1.09M 100  1.09M   0      0  2.69M      0                              0
+
+installing leantar 0.1.17
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+Attempting to download 8232 file(s) from leanprover-community/mathlib4 cache
+Downloaded: 1 file(s) [attempted 1/8232 = 0%, 30 KB/s], Decompressed: 0Downloaded: 3 file(s) [attempted 3/8232 = 0%, 90 KB/s], Decompressed: 1Downloaded: 20 file(s) [attempted 20/8232 = 0%, 2 KB/s], Decompressed: 19Downloaded: 55 file(s) [attempted 55/8232 = 0%, 22 KB/s], Decompressed: 39Downloaded: 88 file(s) [attempted 88/8232 = 1%, 307 KB/s], Decompressed: 74Downloaded: 122 file(s) [attempted 122/8232 = 1%, 160 KB/s], Decompressed: 88Downloaded: 160 file(s) [attempted 160/8232 = 1%, 91 KB/s], Decompressed: 117Downloaded: 207 file(s) [attempted 207/8232 = 2%, 120 KB/s], Decompressed: 117Downloaded: 254 file(s) [attempted 254/8232 = 3%, 214 KB/s], Decompressed: 158Downloaded: 301 file(s) [attempted 301/8232 = 3%, 87 KB/s], Decompressed: 158Downloaded: 343 file(s) [attempted 343/8232 = 4%, 709 KB/s], Decompressed: 158Downloaded: 388 file(s) [attempted 388/8232 = 4%, 2159 KB/s], Decompressed: 236Downloaded: 426 file(s) [attempted 426/8232 = 5%, 456 KB/s], Decompressed: 236Downloaded: 468 file(s) [attempted 468/8232 = 5%, 1212 KB/s], Decompressed: 236Downloaded: 513 file(s) [attempted 513/8232 = 6%, 273 KB/s], Decompressed: 236Downloaded: 553 file(s) [attempted 553/8232 = 6%, 23 KB/s], Decompressed: 361Downloaded: 596 file(s) [attempted 596/8232 = 7%, 80 KB/s], Decompressed: 361Downloaded: 636 file(s) [attempted 636/8232 = 7%, 389 KB/s], Decompressed: 361Downloaded: 680 file(s) [attempted 680/8232 = 8%, 75 KB/s], Decompressed: 361Downloaded: 718 file(s) [attempted 718/8232 = 8%, 855 KB/s], Decompressed: 361Downloaded: 767 file(s) [attempted 767/8232 = 9%, 1932 KB/s], Decompressed: 361Downloaded: 819 file(s) [attempted 819/8232 = 9%, 390 KB/s], Decompressed: 537Downloaded: 866 file(s) [attempted 866/8232 = 10%, 881 KB/s], Decompressed: 537Downloaded: 912 file(s) [attempted 912/8232 = 11%, 429 KB/s], Decompressed: 537Downloaded: 957 file(s) [attempted 957/8232 = 11%, 588 KB/s], Decompressed: 537Downloaded: 1004 file(s) [attempted 1004/8232 = 12%, 849 KB/s], Decompressed: 537Downloaded: 1046 file(s) [attempted 1046/8232 = 12%, 147 KB/s], Decompressed: 537Downloaded: 1089 file(s) [attempted 1089/8232 = 13%, 668 KB/s], Decompressed: 537Downloaded: 1129 file(s) [attempted 1129/8232 = 13%, 84 KB/s], Decompressed: 781Downloaded: 1173 file(s) [attempted 1173/8232 = 14%, 553 KB/s], Decompressed: 781Downloaded: 1213 file(s) [attempted 1213/8232 = 14%, 487 KB/s], Decompressed: 781Downloaded: 1262 file(s) [attempted 1262/8232 = 15%, 140 KB/s], Decompressed: 781Downloaded: 1309 file(s) [attempted 1309/8232 = 15%, 157 KB/s], Decompressed: 781Downloaded: 1354 file(s) [attempted 1354/8232 = 16%, 167 KB/s], Decompressed: 781Downloaded: 1398 file(s) [attempted 1398/8232 = 16%, 604 KB/s], Decompressed: 781Downloaded: 1441 file(s) [attempted 1441/8232 = 17%, 113 KB/s], Decompressed: 781Downloaded: 1485 file(s) [attempted 1485/8232 = 18%, 25 KB/s], Decompressed: 781Downloaded: 1534 file(s) [attempted 1534/8232 = 18%, 249 KB/s], Decompressed: 781Downloaded: 1579 file(s) [attempted 1579/8232 = 19%, 178 KB/s], Decompressed: 1126Downloaded: 1619 file(s) [attempted 1619/8232 = 19%, 147 KB/s], Decompressed: 1126Downloaded: 1655 file(s) [attempted 1655/8232 = 20%, 207 KB/s], Decompressed: 1126Downloaded: 1695 file(s) [attempted 1695/8232 = 20%, 176 KB/s], Decompressed: 1126Downloaded: 1744 file(s) [attempted 1744/8232 = 21%, 778 KB/s], Decompressed: 1126Downloaded: 1788 file(s) [attempted 1788/8232 = 21%, 339 KB/s], Decompressed: 1126Downloaded: 1835 file(s) [attempted 1835/8232 = 22%, 274 KB/s], Decompressed: 1126Downloaded: 1882 file(s) [attempted 1882/8232 = 22%, 464 KB/s], Decompressed: 1126Downloaded: 1927 file(s) [attempted 1927/8232 = 23%, 264 KB/s], Decompressed: 1126Downloaded: 1973 file(s) [attempted 1973/8232 = 23%, 337 KB/s], Decompressed: 1126Downloaded: 2014 file(s) [attempted 2014/8232 = 24%, 489 KB/s], Decompressed: 1126Downloaded: 2060 file(s) [attempted 2060/8232 = 25%, 338 KB/s], Decompressed: 1126Downloaded: 2101 file(s) [attempted 2101/8232 = 25%, 986 KB/s], Decompressed: 1126Downloaded: 2138 file(s) [attempted 2138/8232 = 25%, 531 KB/s], Decompressed: 1574Downloaded: 2179 file(s) [attempted 2179/8232 = 26%, 107 KB/s], Decompressed: 1574Downloaded: 2223 file(s) [attempted 2223/8232 = 27%, 148 KB/s], Decompressed: 1574Downloaded: 2268 file(s) [attempted 2268/8232 = 27%, 275 KB/s], Decompressed: 1574Downloaded: 2315 file(s) [attempted 2315/8232 = 28%, 142 KB/s], Decompressed: 1574Downloaded: 2357 file(s) [attempted 2357/8232 = 28%, 129 KB/s], Decompressed: 1574Downloaded: 2401 file(s) [attempted 2401/8232 = 29%, 385 KB/s], Decompressed: 1574Downloaded: 2442 file(s) [attempted 2442/8232 = 29%, 252 KB/s], Decompressed: 1574Downloaded: 2484 file(s) [attempted 2484/8232 = 30%, 60 KB/s], Decompressed: 1574Downloaded: 2529 file(s) [attempted 2529/8232 = 30%, 128 KB/s], Decompressed: 1574Downloaded: 2575 file(s) [attempted 2575/8232 = 31%, 97 KB/s], Decompressed: 1574Downloaded: 2620 file(s) [attempted 2620/8232 = 31%, 550 KB/s], Decompressed: 1574Downloaded: 2658 file(s) [attempted 2658/8232 = 32%, 200 KB/s], Decompressed: 1574Downloaded: 2700 file(s) [attempted 2700/8232 = 32%, 276 KB/s], Decompressed: 1574Downloaded: 2745 file(s) [attempted 2745/8232 = 33%, 359 KB/s], Decompressed: 1574Downloaded: 2789 file(s) [attempted 2789/8232 = 33%, 321 KB/s], Decompressed: 1574Downloaded: 2838 file(s) [attempted 2838/8232 = 34%, 265 KB/s], Decompressed: 1574Downloaded: 2883 file(s) [attempted 2883/8232 = 35%, 45 KB/s], Decompressed: 1574Downloaded: 2921 file(s) [attempted 2921/8232 = 35%, 974 KB/s], Decompressed: 2118Downloaded: 2963 file(s) [attempted 2963/8232 = 35%, 227 KB/s], Decompressed: 2118Downloaded: 3006 file(s) [attempted 3006/8232 = 36%, 937 KB/s], Decompressed: 2118Downloaded: 3052 file(s) [attempted 3052/8232 = 37%, 199 KB/s], Decompressed: 2118Downloaded: 3099 file(s) [attempted 3099/8232 = 37%, 144 KB/s], Decompressed: 2118Downloaded: 3141 file(s) [attempted 3141/8232 = 38%, 430 KB/s], Decompressed: 2118Downloaded: 3179 file(s) [attempted 3179/8232 = 38%, 198 KB/s], Decompressed: 2118Downloaded: 3222 file(s) [attempted 3222/8232 = 39%, 145 KB/s], Decompressed: 2118Downloaded: 3269 file(s) [attempted 3269/8232 = 39%, 667 KB/s], Decompressed: 2118Downloaded: 3318 file(s) [attempted 3318/8232 = 40%, 217 KB/s], Decompressed: 2118Downloaded: 3364 file(s) [attempted 3364/8232 = 40%, 490 KB/s], Decompressed: 2118Downloaded: 3404 file(s) [attempted 3404/8232 = 41%, 383 KB/s], Decompressed: 2118Downloaded: 3449 file(s) [attempted 3449/8232 = 41%, 146 KB/s], Decompressed: 2118Downloaded: 3494 file(s) [attempted 3494/8232 = 42%, 81 KB/s], Decompressed: 2118Downloaded: 3532 file(s) [attempted 3532/8232 = 42%, 864 KB/s], Decompressed: 2118Downloaded: 3578 file(s) [attempted 3578/8232 = 43%, 105 KB/s], Decompressed: 2118Downloaded: 3625 file(s) [attempted 3625/8232 = 44%, 372 KB/s], Decompressed: 2118Downloaded: 3665 file(s) [attempted 3665/8232 = 44%, 45 KB/s], Decompressed: 2118Downloaded: 3708 file(s) [attempted 3708/8232 = 45%, 317 KB/s], Decompressed: 2118Downloaded: 3753 file(s) [attempted 3753/8232 = 45%, 964 KB/s], Decompressed: 2118Downloaded: 3799 file(s) [attempted 3799/8232 = 46%, 349 KB/s], Decompressed: 2118Downloaded: 3844 file(s) [attempted 3844/8232 = 46%, 927 KB/s], Decompressed: 2118Downloaded: 3890 file(s) [attempted 3890/8232 = 47%, 287 KB/s], Decompressed: 2118Downloaded: 3922 file(s) [attempted 3922/8232 = 47%, 855 KB/s], Decompressed: 2118Downloaded: 3966 file(s) [attempted 3966/8232 = 48%, 49 KB/s], Decompressed: 2118Downloaded: 4011 file(s) [attempted 4011/8232 = 48%, 221 KB/s], Decompressed: 2118Downloaded: 4055 file(s) [attempted 4055/8232 = 49%, 259 KB/s], Decompressed: 2896Downloaded: 4100 file(s) [attempted 4100/8232 = 49%, 1953 KB/s], Decompressed: 2896Downloaded: 4142 file(s) [attempted 4142/8232 = 50%, 251 KB/s], Decompressed: 2896Downloaded: 4182 file(s) [attempted 4182/8232 = 50%, 783 KB/s], Decompressed: 2896Downloaded: 4227 file(s) [attempted 4227/8232 = 51%, 77 KB/s], Decompressed: 2896Downloaded: 4267 file(s) [attempted 4267/8232 = 51%, 288 KB/s], Decompressed: 2896Downloaded: 4312 file(s) [attempted 4312/8232 = 52%, 79 KB/s], Decompressed: 2896Downloaded: 4356 file(s) [attempted 4356/8232 = 52%, 35 KB/s], Decompressed: 2896Downloaded: 4396 file(s) [attempted 4396/8232 = 53%, 183 KB/s], Decompressed: 2896Downloaded: 4441 file(s) [attempted 4441/8232 = 53%, 987 KB/s], Decompressed: 2896Downloaded: 4486 file(s) [attempted 4486/8232 = 54%, 489 KB/s], Decompressed: 2896Downloaded: 4530 file(s) [attempted 4530/8232 = 55%, 1131 KB/s], Decompressed: 2896Downloaded: 4573 file(s) [attempted 4573/8232 = 55%, 213 KB/s], Decompressed: 2896Downloaded: 4608 file(s) [attempted 4608/8232 = 55%, 24 KB/s], Decompressed: 2896Downloaded: 4653 file(s) [attempted 4653/8232 = 56%, 681 KB/s], Decompressed: 2896Downloaded: 4702 file(s) [attempted 4702/8232 = 57%, 448 KB/s], Decompressed: 2896Downloaded: 4753 file(s) [attempted 4753/8232 = 57%, 77 KB/s], Decompressed: 2896Downloaded: 4802 file(s) [attempted 4802/8232 = 58%, 767 KB/s], Decompressed: 2896Downloaded: 4849 file(s) [attempted 4849/8232 = 58%, 112 KB/s], Decompressed: 2896Downloaded: 4887 file(s) [attempted 4887/8232 = 59%, 143 KB/s], Decompressed: 2896Downloaded: 4929 file(s) [attempted 4929/8232 = 59%, 211 KB/s], Decompressed: 2896Downloaded: 4972 file(s) [attempted 4972/8232 = 60%, 356 KB/s], Decompressed: 2896Downloaded: 5018 file(s) [attempted 5018/8232 = 60%, 826 KB/s], Decompressed: 2896Downloaded: 5065 file(s) [attempted 5065/8232 = 61%, 90 KB/s], Decompressed: 2896Downloaded: 5107 file(s) [attempted 5107/8232 = 62%, 1145 KB/s], Decompressed: 2896Downloaded: 5148 file(s) [attempted 5148/8232 = 62%, 657 KB/s], Decompressed: 2896Downloaded: 5188 file(s) [attempted 5188/8232 = 63%, 119 KB/s], Decompressed: 2896Downloaded: 5232 file(s) [attempted 5232/8232 = 63%, 91 KB/s], Decompressed: 2896Downloaded: 5277 file(s) [attempted 5277/8232 = 64%, 794 KB/s], Decompressed: 2896Downloaded: 5324 file(s) [attempted 5324/8232 = 64%, 74 KB/s], Decompressed: 2896Downloaded: 5368 file(s) [attempted 5368/8232 = 65%, 31 KB/s], Decompressed: 2896Downloaded: 5413 file(s) [attempted 5413/8232 = 65%, 1223 KB/s], Decompressed: 2896Downloaded: 5455 file(s) [attempted 5455/8232 = 66%, 92 KB/s], Decompressed: 2896Downloaded: 5500 file(s) [attempted 5500/8232 = 66%, 47 KB/s], Decompressed: 2896Downloaded: 5544 file(s) [attempted 5544/8232 = 67%, 686 KB/s], Decompressed: 4013Downloaded: 5587 file(s) [attempted 5587/8232 = 67%, 300 KB/s], Decompressed: 4013Downloaded: 5625 file(s) [attempted 5625/8232 = 68%, 497 KB/s], Decompressed: 4013Downloaded: 5667 file(s) [attempted 5667/8232 = 68%, 72 KB/s], Decompressed: 4013Downloaded: 5712 file(s) [attempted 5712/8232 = 69%, 218 KB/s], Decompressed: 4013Downloaded: 5756 file(s) [attempted 5756/8232 = 69%, 361 KB/s], Decompressed: 4013Downloaded: 5803 file(s) [attempted 5803/8232 = 70%, 624 KB/s], Decompressed: 4013Downloaded: 5845 file(s) [attempted 5845/8232 = 71%, 652 KB/s], Decompressed: 4013Downloaded: 5888 file(s) [attempted 5888/8232 = 71%, 747 KB/s], Decompressed: 4013Downloaded: 5934 file(s) [attempted 5934/8232 = 72%, 610 KB/s], Decompressed: 4013Downloaded: 5975 file(s) [attempted 5975/8232 = 72%, 181 KB/s], Decompressed: 4013Downloaded: 6010 file(s) [attempted 6010/8232 = 73%, 695 KB/s], Decompressed: 4013Downloaded: 6050 file(s) [attempted 6050/8232 = 73%, 107 KB/s], Decompressed: 4013Downloaded: 6095 file(s) [attempted 6095/8232 = 74%, 585 KB/s], Decompressed: 4013Downloaded: 6140 file(s) [attempted 6140/8232 = 74%, 141 KB/s], Decompressed: 4013Downloaded: 6186 file(s) [attempted 6186/8232 = 75%, 957 KB/s], Decompressed: 4013Downloaded: 6224 file(s) [attempted 6224/8232 = 75%, 396 KB/s], Decompressed: 4013Downloaded: 6273 file(s) [attempted 6273/8232 = 76%, 237 KB/s], Decompressed: 4013Downloaded: 6322 file(s) [attempted 6322/8232 = 76%, 174 KB/s], Decompressed: 4013Downloaded: 6369 file(s) [attempted 6369/8232 = 77%, 47 KB/s], Decompressed: 4013Downloaded: 6411 file(s) [attempted 6411/8232 = 77%, 113 KB/s], Decompressed: 4013Downloaded: 6452 file(s) [attempted 6452/8232 = 78%, 333 KB/s], Decompressed: 4013Downloaded: 6498 file(s) [attempted 6498/8232 = 78%, 450 KB/s], Decompressed: 4013Downloaded: 6543 file(s) [attempted 6543/8232 = 79%, 631 KB/s], Decompressed: 4013Downloaded: 6585 file(s) [attempted 6585/8232 = 79%, 265 KB/s], Decompressed: 4013Downloaded: 6625 file(s) [attempted 6625/8232 = 80%, 1308 KB/s], Decompressed: 4013Downloaded: 6672 file(s) [attempted 6672/8232 = 81%, 219 KB/s], Decompressed: 4013Downloaded: 6717 file(s) [attempted 6717/8232 = 81%, 220 KB/s], Decompressed: 4013Downloaded: 6755 file(s) [attempted 6755/8232 = 82%, 47 KB/s], Decompressed: 4013Downloaded: 6799 file(s) [attempted 6799/8232 = 82%, 561 KB/s], Decompressed: 4013Downloaded: 6839 file(s) [attempted 6839/8232 = 83%, 232 KB/s], Decompressed: 4013Downloaded: 6886 file(s) [attempted 6886/8232 = 83%, 1107 KB/s], Decompressed: 4013Downloaded: 6937 file(s) [attempted 6937/8232 = 84%, 565 KB/s], Decompressed: 4013Downloaded: 6987 file(s) [attempted 6987/8232 = 84%, 174 KB/s], Decompressed: 4013Downloaded: 7036 file(s) [attempted 7036/8232 = 85%, 777 KB/s], Decompressed: 4013Downloaded: 7082 file(s) [attempted 7082/8232 = 86%, 610 KB/s], Decompressed: 4013Downloaded: 7129 file(s) [attempted 7129/8232 = 86%, 580 KB/s], Decompressed: 4013Downloaded: 7178 file(s) [attempted 7178/8232 = 87%, 74 KB/s], Decompressed: 4013Downloaded: 7209 file(s) [attempted 7209/8232 = 87%, 154 KB/s], Decompressed: 4013Downloaded: 7252 file(s) [attempted 7252/8232 = 88%, 1046 KB/s], Decompressed: 4013Downloaded: 7299 file(s) [attempted 7299/8232 = 88%, 470 KB/s], Decompressed: 4013Downloaded: 7343 file(s) [attempted 7343/8232 = 89%, 202 KB/s], Decompressed: 4013Downloaded: 7386 file(s) [attempted 7386/8232 = 89%, 69 KB/s], Decompressed: 4013Downloaded: 7423 file(s) [attempted 7423/8232 = 90%, 658 KB/s], Decompressed: 4013Downloaded: 7468 file(s) [attempted 7468/8232 = 90%, 39 KB/s], Decompressed: 4013Downloaded: 7508 file(s) [attempted 7508/8232 = 91%, 179 KB/s], Decompressed: 4013Downloaded: 7553 file(s) [attempted 7553/8232 = 91%, 2092 KB/s], Decompressed: 4013Downloaded: 7595 file(s) [attempted 7595/8232 = 92%, 777 KB/s], Decompressed: 4013Downloaded: 7640 file(s) [attempted 7640/8232 = 92%, 333 KB/s], Decompressed: 4013Downloaded: 7682 file(s) [attempted 7682/8232 = 93%, 1265 KB/s], Decompressed: 4013Downloaded: 7729 file(s) [attempted 7729/8232 = 93%, 478 KB/s], Decompressed: 5538Downloaded: 7769 file(s) [attempted 7769/8232 = 94%, 216 KB/s], Decompressed: 5538Downloaded: 7811 file(s) [attempted 7811/8232 = 94%, 899 KB/s], Decompressed: 5538Downloaded: 7854 file(s) [attempted 7854/8232 = 95%, 77 KB/s], Decompressed: 5538Downloaded: 7900 file(s) [attempted 7900/8232 = 95%, 113 KB/s], Decompressed: 5538Downloaded: 7945 file(s) [attempted 7945/8232 = 96%, 124 KB/s], Decompressed: 5538Downloaded: 7987 file(s) [attempted 7987/8232 = 97%, 1084 KB/s], Decompressed: 5538Downloaded: 8032 file(s) [attempted 8032/8232 = 97%, 281 KB/s], Decompressed: 5538Downloaded: 8076 file(s) [attempted 8076/8232 = 98%, 582 KB/s], Decompressed: 5538Downloaded: 8123 file(s) [attempted 8123/8232 = 98%, 209 KB/s], Decompressed: 5538Downloaded: 8170 file(s) [attempted 8170/8232 = 99%, 85 KB/s], Decompressed: 5538Downloaded: 8212 file(s) [attempted 8212/8232 = 99%, 159 KB/s], Decompressed: 5538Downloaded: 8232 file(s) [attempted 8232/8232 = 100%, 159 KB/s], Decompressed: 5538
+Decompressed 8232 file(s)
+Already decompressed 8232 file(s)
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8232 file(s)
+✔ [8247/8271] Built AC (3.9s)
+✔ [8250/8271] Built ACProof.Consequence (1.4s)
+✔ [8251/8271] Built ACProof.Basic (12s)
+✔ [8252/8271] Built ACProof.MillerSchupp (13s)
+✔ [8253/8271] Built ACProof.MS1 (4.4s)
+✔ [8254/8271] Built ACProof.MSwk (4.3s)
+✔ [8255/8271] Built ACProof.MS2 (6.6s)
+✔ [8256/8271] Built ACProof.AK (3.9s)
+✔ [8257/8271] Built ACProof.NewFamilies (4.4s)
+✔ [8258/8271] Built ACProof.Period (7.6s)
+✔ [8259/8271] Built ACProof.Tactics (7.6s)
+✔ [8260/8271] Built ACProof.Comparison (7.8s)
+✔ [8261/8271] Built ACProof.General (3.5s)
+✔ [8262/8271] Built ACProof.MS2All (11s)
+✔ [8263/8271] Built ACProof.MS2Alt (7.4s)
+✔ [8264/8271] Built ACProof.AKFamily (10s)
+✔ [8265/8271] Built ACProof.N3 (132s)
+✔ [8266/8271] Built ACProof.AK3Link (13s)
+✔ [8267/8271] Built ACProof.N4 (159s)
+✔ [8268/8271] Built ACProof.AK4Link (4.3s)
+✔ [8269/8271] Built ACProof.N5 (166s)
+ℹ [8270/8271] Built ACProof.Check (13s)
+info: ACProof/Check.lean:12:0: 'AC.reach_mul_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:13:0: 'AC.Reachable.presentsTrivialGroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:14:0: 'AC.Reachable.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:15:0: 'AC.Reachable.presentsTrivialGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:16:0: 'AC.reach_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:17:0: 'AC.reach_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:18:0: 'AC.reach_mulLeft' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:19:0: 'AC.Reachable.map' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:20:0: 'AC.Reachable.relabel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:21:0: 'AC.MS1_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:22:0: 'AC.MS_wstar_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:23:0: 'AC.MS_wk_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:24:0: 'AC.MS_wk_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:25:0: 'AC.MS2_wk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:26:0: 'AC.AK_reach_MS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:27:0: 'AC.AK2_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:28:0: 'AC.MS_reach_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:29:0: 'AC.MS_ypow_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:30:0: 'AC.MS_wA_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:31:0: 'AC.MS_wA_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:32:0: 'AC.MS_wA_negsucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:33:0: 'AC.MS_wA_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:34:0: 'AC.MS_wA_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:35:0: 'AC.MS_wA_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:36:0: 'AC.MS_wA_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:37:0: 'AC.MS_wA_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:38:0: 'AC.MS_wA_period_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:39:0: 'AC.MS_wA_of_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:40:0: 'AC.MS_wA_mult_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:41:0: 'AC.MS_wA_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:42:0: 'AC.MS_wA_negate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:43:0: 'AC.MS_wA_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:44:0: 'AC.MS_wA_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:45:0: 'AC.MS_wA_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:46:0: 'AC.MS2_v_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:47:0: 'AC.MS2_v_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:48:0: 'AC.MS2_wA_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:49:0: 'AC.MS2_wA_all'' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:50:0: 'AC.MS3_wA_m10' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:51:0: 'AC.MS3_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:52:0: 'AC.MS3_wA_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:53:0: 'AC.MS3_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:54:0: 'AC.MS4_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:55:0: 'AC.MS4_wA_m6' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:56:0: 'AC.MS4_wA_m14' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:57:0: 'AC.MS4_wA_m18' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:58:0: 'AC.MS4_wA_m19' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:59:0: 'AC.MS4_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:60:0: 'AC.link_identity' depends on axioms: [propext, Quot.sound]
+info: ACProof/Check.lean:61:0: 'AC.phi_MS3_wA5_reach_wk8' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:62:0: 'AC.MS3_wA5_iff_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:63:0: 'AC.MS3_wA_of_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:64:0: 'AC.bs_pow' depends on axioms: [propext]
+info: ACProof/Check.lean:65:0: 'AC.link4_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:66:0: 'AC.phi_MS4_wAm9_reach_wkm9' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:67:0: 'AC.MS4_wAm9_iff_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:68:0: 'AC.MS4_wA_9_11_of_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:69:0: 'AC.MS_wA_reach_SnPres' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:70:0: 'AC.SnPres_reach_MS_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:71:0: 'AC.MS5_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:72:0: 'AC.MS5_wA_m3' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:73:0: 'AC.MS5_wA_m27' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:74:0: 'AC.MS5_wA_m28' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:75:0: 'AC.MS5_wA_m9' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:76:0: 'AC.MS5_wA_m21' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:77:0: 'AC.MS5_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:78:0: 'AC.MS_wA_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:79:0: 'AC.MS_wA_period_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:80:0: 'AC.MS_wA_pm_iff_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:81:0: 'AC.MS5_wA_19_reach_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ACProof/Check.lean:82:0: 'AC.MS5_wA_11_19_iff_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8271 jobs).
+== sorry/admit scan:
+none
+== #print axioms (ACProof/Check.lean):
+'AC.reach_mul_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_mulLeft' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.relabel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS1_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wstar_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_reach_MS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_reach_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_ypow_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negsucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_of_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.link_identity' depends on axioms: [propext, Quot.sound]
+'AC.phi_MS3_wA5_reach_wk8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA5_iff_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_of_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.bs_pow' depends on axioms: [propext]
+'AC.link4_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.phi_MS4_wAm9_reach_wkm9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wAm9_iff_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_9_11_of_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reach_SnPres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.SnPres_reach_MS_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m27' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m28' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m21' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_pm_iff_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_19_reach_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_11_19_iff_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+== theorems audited: 71; with nonstandard axioms: 0
+== REPRODUCE OK
+
+== EXIT CODE: 0
+== finished(UTC): 2026-11-26T17:56:19Z

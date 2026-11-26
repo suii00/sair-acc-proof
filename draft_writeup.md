@@ -1,32 +1,12 @@
-# Submission candidate v1.2 — Miller–Schupp presentations MS(n, y^{-m} x y^m x^{-1}): Lean formalization against the official definitions, with prior-art accounting
-SAIR Andrews–Curtis Challenge, Proof Track. Conjecture: **AC**. Direction: **proof**, as a *partial result*.
-No claim is made about the full conjecture. Status: candidate, NOT submitted.
+# A periodic Miller–Schupp class reaching the Akbulut–Kirby presentation
 
-Every theorem below is kernel-checked in Lean 4 (v4.29.1, Mathlib 5e932f97) against the UNMODIFIED official
-`competition/tools/lean/AC.lean` of SAIRcompetition/Andrews-Curtis @ a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
-(`AC.Reachable`, `AC.standard`; sha256 927ba318…). The build uses warningAsError and has no `sorry`/`admit`/`native_decide`.
-`#print axioms` over all 66 audited theorems shows only axioms from {propext, Classical.choice, Quot.sound}: 64 use exactly
-these three; `bs_pow` uses [propext] and `link_identity` uses [propext, Quot.sound]. See `logs/build_axioms_v1.2.log` and
-`scripts/reproduce.sh`.
+SAIR Andrews–Curtis Challenge, Proof Track. Partial result, v1.3 submission candidate.
 
-**What changed since v1 (honest scope).**
-- The v1.1 prior-art check found R. Sneiderman's public Lean repository (github.com/Robby955/ac-square-divisibility,
-  public since 2026-09-12, built against the same official AC.lean). It proves period and n ≤ 2 results for the
-  three-parameter family (x⁻¹yⁿxy^{-(n+1)}, x⁻¹y^a x y^b x⁻¹y^c), and our MS(n, wA m) is AC-equivalent to its point
-  (−m, m, 0) (our Lean `MS_wA_reach_SnPres`).
-- **Consequently, the triviality content of our period theorem, MS_wA_cover and the n = 2 all-m theorem is NOT new.** It
-  follows from Sneiderman's stated theorems (§2c, §5b).
-- v1.1 therefore does not present these as "not found in the literature". What remains possibly new is small: Lean
-  certificates for certain finite residue cells at n = 3, 4, 5 (§2d); the AK(4) link (novelty unconfirmed); and the
-  AC-equivalence (rather than triviality-iff) form of the period.
-- **What changed in v1.2.** The n = 5 case of Theorem 4: certified search paths for six further residue cells at
-  n = 5 (m ≡ 2, 3, 9, 21, 27, 28 mod 30), giving `MS5_wA` (18 of the 30 classes at n = 5). Prior-art check for
-  these cells (2026-11-18): Sneiderman's stated theorems cover exactly the complementary 12 classes at n = 5, as
-  at n = 3, 4; Mulay's Contributor Network entry ACC-P000013 treats only the single line w = w_A(1), quantitatively
-  (move counts and a lower bound), with no Lean formalization and no residue classification. Novelty of the six
-  cells is NOT confirmed: the benchmark tables (Shehper/Fagan) were not checked for n = 5 instances.
-- The AK(3)/AK(4) links are presented as independent formal proofs (§2b): the AK(3) one of a known fact, the AK(4) one
-  of a fact whose novelty is unconfirmed.
+For every $n\in\mathbb N$ and $t\in\mathbb Z$, we give an ordinary AC path from $\mathrm{MS}(n,w_A(m))$ to $\mathrm{AK}(n)$ for $m=-(2n+1)+tn(n+1)$. For $m=\pm(2n+1)+tn(n+1)$ the two presentations have equivalent AC-triviality. At $n=5$ the path concerns class 19 modulo 30. The equivalence of triviality concerns classes 11 and 19. Separately, we certify unconditional AC-triviality for 18 residue classes at $n=5$ by the general families and six independently generated Lean paths.
+
+In the classical range $n\ge2$, the proof identifies the parameter that joins Sneiderman’s shift with the equivalences of Shehper et al. and Myasnikov–Myasnikov–Shpilrain. Fagan et al. already list the six finite benchmark cases as trivial. Our contribution is the uniform statement in the official AC definitions, its Lean proof, and the explicit correspondence between the certified residues and the published table. [Sneiderman, parameter shifts](https://github.com/Robby955/ac-square-divisibility/blob/v0.1.0/lean/ACParameterShift.lean) · [Shehper et al., §3.5](https://arxiv.org/html/2408.15332v2#S3.SS5) · [Myasnikov et al., Prop. 1.3](https://arxiv.org/pdf/math/0302080) · [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+The target is the official `AC.Reachable` relation on ordered tuples, with `AC.standard 2` as the trivial presentation. The reproduction script pins `AC.lean` at commit `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e` and verifies SHA-256 `927ba318d26b06c312140117b2a4856373832ed2c043944f520ec7337bcfca1b`. Open Math OS verified proof commit `f2ba667089229bcc4a1c0c0576c407c9ac3794c9` with Lean 4.29.1 and Mathlib `5e932f97dd25535344f80f9dd8da3aab83df0fe6`. All 71 declarations passed the axiom audit, including the five new statements from Theorem 5. The run ended with `REPRODUCE OK` and exit code 0. [Official definitions](https://github.com/SAIRcompetition/Andrews-Curtis/blob/a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e/competition/tools/lean/AC.lean) · [v1.3 full build and axiom log](logs/build_axioms_v1.3.log) · [Reproduction script](scripts/reproduce.sh)
 
 ## 0. Conventions and terminology
 x = `FreeGroup.of 0`, y = `FreeGroup.of 1`, X = x⁻¹, Y = y⁻¹.
@@ -36,10 +16,10 @@ AK(n) = ⟨x,y | xⁿ = y^{n+1}, xyx = yxy⟩ (Lean `AK n`).
 - **AC-trivial**: `Reachable R (standard 2)`.
 - **AC-equivalent presentations** (R ~ S): `Reachable R S`. This relation is symmetric (`Reachable.symm`).
 - **AC-triviality transfer** (R ⇒triv S): "R AC-trivial implies S AC-trivial". This gives no AC path. `MS_wA_negate`,
-  the shear/automorphism steps, and the AK links are transfers.
+  the shear steps, and the earlier AK(3) and AK(4) iff lemmas are transfers. Theorem 5 gives a path for an entire residue class.
 - **Sneiderman coordinates**: `SnPres n a b c = ![x⁻¹yⁿxy^{-(n+1)}, x⁻¹y^a x y^b x⁻¹y^c]` (our restatement, Comparison.lean).
   `MS_wA_reach_SnPres : MS n (wA m) ~ SnPres n (−m) m 0` (one inversion plus one conjugation).
-  By CRT, m mod n(n+1) ↔ cell (−m mod n, m mod n+1).
+  For $n>0$, CRT identifies m mod n(n+1) with the cell (−m mod n, m mod n+1).
 
 ## 1. Results (Lean)
 **Theorem 1 (period; all n).** `MS_wA_period`, `MS_wA_period_mul`: MS(n, wA m) ~ MS(n, wA(m + t·n(n+1))).
@@ -64,32 +44,18 @@ Ours is an independent proof.
 
 **Theorem 4 (n = 3, 4, 5; certified search paths).** `MS3_wA`: AC-trivial for m mod 12 ∉ {5, 7}. `MS4_wA`: AC-trivial for
 m mod 20 ∉ {3, 7, 9, 11, 13, 17}. `MS5_wA`: AC-trivial for m mod 30 ∉ {4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26}.
-*Prior art:*
-- The cells covered by Sneiderman's general theorems are m ≡ 0,1,3,4,6,8,9,11 (mod 12), m ≡ 0,1,4,5,8,10,12,15,16,19
-  (mod 20) and m ≡ 0,1,5,6,10,12,15,18,20,24,25,29 (mod 30).
-- **Only our Lean-checked paths cover** m ≡ 2, 10 (mod 12), m ≡ 2, 6, 14, 18 (mod 20) and m ≡ 2, 3, 9, 21, 27, 28
-  (mod 30). I did not find these in the sources checked.
-- These are finite base cases (each one presentation plus periodicity). Benchmark tables may contain them.
+At $n=5$, Theorem 3 covers $0,1,5,6,10,12,15,18,20,24,25,29$ modulo 30. Six search certificates cover $2,3,9,21,27,28$. The published benchmark already records each short representative as trivial. Section 2d gives the matching words and the two further literature cases.
 
-**Theorem 5 (AK links; independent formal proofs).**
-- `MS3_wA5_iff_AK3`: MS(3, wA 5) AC-trivial ⇔ AK(3) AC-trivial. Hence `MS3_wA_of_AK3`: if AK(3) is AC-trivial then
-  MS(3, wA m) is AC-trivial for every m.
-  This is **a known fact, in a stronger form**:
-  - MS(3, wA 5) ~ ⟨x⁻¹y³x = y⁴, x = y⁻¹x²y⁻¹⟩, which Shehper et al. v2 §3 state is AC-equivalent to AK(3).
-  - Carreras 2026 Thm 4 certifies that equivalence with an explicit 22-move path.
-  - Fagan et al. App. F put it in class 13₁.
-- `MS4_wAm9_iff_AK4`, `MS4_wA_9_11_of_AK4`: MS(4, wA(−9)) AC-trivial ⇔ AK(4) AC-trivial; if AK(4) is AC-trivial, then
-  m ≡ 9, 11 (mod 20) are covered. **Novelty unconfirmed**: Fagan et al. class 15₁ contains MS(4, yxyx⁻¹), but I did not
-  find a statement that 15₁ is AK(4)'s class.
-- Method (automorphism x ↦ xy^k plus one BS(n,n+1) identity) is standard: Panteleev–Ushakov Lemma 3.1, Prop 3.7.
-- In Sneiderman coordinates both MS(3, wA 5) and MS(4, wA(−9)) are the cell (1, 1).
+**Theorem 5 (uniform AK reduction).** Fix $n\in\mathbb N$, $t\in\mathbb Z$ and put $N=n(n+1)$. For $m=-(2n+1)+tN$, the presentation $\mathrm{MS}(n,w_A(m))$ reaches $\mathrm{AK}(n)$. For $m=\pm(2n+1)+tN$, its AC-triviality is equivalent to that of $\mathrm{AK}(n)$. For $n>0$ these equalities describe residue classes. At $n=0$ they give the path for $m=-1$ and the equivalence of triviality for $m=\pm1$. At $n=5$ the path covers class 19 and the triviality equivalence covers classes 11 and 19.
+
+The underlying parameter step appears in Sneiderman’s `shift_steps` at $t=2$. In coordinates $(a,b,c)=(-m,m,0)$ it carries $(2n+1,-2n-1,0)$ to $(1,1,0)$. The second relation there is $x^2=yxy$. Identify it with $\mathrm{MS}(n,w_0)$. In the published ranges, [SMF, Thm 6] applies for $n>0$ and [MMS, Prop 1.3] for $n\ge2$. Our Lean lemmas prove both steps for every natural $n$. The periodic extension uses the separate path of Theorem 1. At $n=3$ the finite identification also follows from Carreras’s Theorem 4. At $n=5$ Fagan et al. put the words $yxyx^{-1}$ and $yxyx^{-1}y^{-1}$ in class $16_1$. The second relator of the latter is cyclically conjugate to the second relator for $w_1$, giving an independent prior identification of the finite base. [Sneiderman](https://github.com/Robby955/ac-square-divisibility/blob/v0.1.0/lean/ACParameterShift.lean) · [Carreras](https://arxiv.org/html/2607.23611v1) · [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
 
 ## 2. Classification of results and theorem ↔ Lean correspondence
 Files are under `lean/ACProof/`. See §5 for the sources.
 
 ### 2a. Formalization of known results (credit to the original authors)
-An earlier, independent formalization of these results (and, by the authors' account, of all results of [SMF]) exists:
-George–Zhao, in their own framework and not against the official AC.lean, repository unreleased (§5b).
+George and Zhao report an earlier formalization of the results of [SMF] in their own framework (§5b).
+
 | Statement | Lean name | File | Src |
 |---|---|---|---|
 | AC-moves preserve the normal closure; triviality invariance | `Reachable.ncl_eq` (helper), `Reachable.presentsTrivialGroup_iff`, `Reachable.presentsTrivialGroup` | Basic | standard |
@@ -103,16 +69,21 @@ George–Zhao, in their own framework and not against the official AC.lean, repo
 | AK(2) AC-trivial | `AK2_reachable` | AK | [MMS] Prop 1.1 |
 | MS(n, w_k) ~ P(n, k) | `MS_reach_P` | AK | [SMF] Thm 7 |
 
-### 2b. Independent formal proofs of known (or claimed) AK links
+### 2b. AK reduction and earlier specializations
+
 | Statement | Lean name | File | Status |
 |---|---|---|---|
 | automorphism φ_k: x ↦ xy^k, y ↦ y, with inverse φ_{−k} | `phiK`, `phiK_inv_comp`, `phiK_comp_MS`, `phiK_std`, `std_of_xyk` (def/helper lemmas, not separately listed in Check.lean; used by the audited theorems) | AK3Link | standard (PU Lemma 3.1) |
 | key BS(3,4) identity; φ₃(MS(3,wA 5)) ~ MS(3, w_8) | `link_identity`, `phi_MS3_wA5_reach_wk8` | AK3Link | proof ingredient |
 | MS(3, wA 5) triv ⇔ AK(3) triv; AK(3) triv ⇒ all MS(3, wA m) triv | `MS3_wA5_iff_AK3`, `MS3_wA_of_AK3` | AK3Link | KNOWN ([SMF] v2 §3; [Car] Thm 4; [Fag] App. F) |
 | BS(4,5) identities; φ₋₆(MS(4,wA(−9))) ~ MS(4, w_{−9}) | `bs_pow`, `link4_identity`, `phi_MS4_wAm9_reach_wkm9` | AK4Link | proof ingredient |
-| MS(4, wA(−9)) triv ⇔ AK(4) triv; AK(4) triv ⇒ m ≡ 9, 11 (mod 20) | `MS4_wAm9_iff_AK4`, `MS4_wA_9_11_of_AK4` | AK4Link | novelty unconfirmed |
+| MS(4, wA(−9)) triv ⇔ AK(4) triv; AK(4) triv ⇒ m ≡ 9, 11 (mod 20) | `MS4_wAm9_iff_AK4`, `MS4_wA_9_11_of_AK4` | AK4Link | also follows from Theorem 5 |
+| Path at $m=-(2n+1)$ and its periodic translates | `MS_wA_reach_AK`, `MS_wA_period_reach_AK` | AKFamily | Thm 5 |
+| AC-triviality iff AK(n) is AC-trivial for both signs | `MS_wA_pm_iff_AK` | AKFamily | Thm 5 |
+| Path to AK(5) for class 19 and triviality iff for 11 or 19 | `MS5_wA_19_reach_AK5`, `MS5_wA_11_19_iff_AK5` | AKFamily | Thm 5 at $n=5$ |
 
-### 2c. Results whose triviality content is implied by prior work (Sneiderman 2026); our proofs are independent
+### 2c. Independent proofs of consequences of Sneiderman’s general families
+
 | Statement | Lean name | File | Prior art |
 |---|---|---|---|
 | correspondence MS(n, wA m) ~ SnPres n (−m) m 0 | `MS_wA_reach_SnPres`, `SnPres_reach_MS_wA` | Comparison | (comparison lemma, ours) |
@@ -126,28 +97,33 @@ George–Zhao, in their own framework and not against the official AC.lean, repo
 | Thm 1, period n(n+1) (AC-equivalence form) | `MS_wA_period`, `MS_wA_period_mul`, `MS_wA_of_residues` | Period | triviality consequence: [Sn] `residue_solvable_iff` |
 | Thm 2 (n = 2, all m) | `MS2_wA_all'` (proof A), `MS2_wA_all`, `MS2_v_shift`, `MS2_v_reachable` (proof B) | MS2Alt, MS2All | [Sn] `all_parameters_two`; instances m=±1,±5: Myasnikov 1999, Havas–Ramsay 2003 |
 
-### 2d. Finite cells not found in the sources checked (novelty NOT confirmed)
-| Statement | Lean name | File |
-|---|---|---|
-| Thm 4, n = 3 (new cells m ≡ 2, 10 mod 12) | `MS3_wA` (bases `MS3_wA_m10`, `MS3_wA_m2`, `MS3_wA_m1`) | N3 |
-| Thm 4, n = 4 (new cells m ≡ 2, 6, 14, 18 mod 20) | `MS4_wA` (bases `MS4_wA_m2`, `_m6`, `_m14` [m=−6], `_m18` [m=−2], `_m19` [m=−1]) | N4 |
-| Thm 4, n = 5 (new cells m ≡ 2, 3, 9, 21, 27, 28 mod 30) | `MS5_wA` (bases `MS5_wA_m2`, `_m3`, `_m27` [m=−3], `_m28` [m=−2], `_m9` [m=−21], `_m21` [m=−9]) | N5 |
+### 2d. Certified residue classes and published benchmark words
 
-### 2e. Unproven (open; no claim)
-- MS(3, wA m) for m ≡ ±5 mod 12 is unproven. It is equivalent in triviality to AK(3).
-- MS(4, wA m) for m ≡ ±3, ±7 mod 20 is unproven. So is m ≡ ±9 mod 20, which is equivalent to AK(4).
-- MS(5, wA m) for m ≡ 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26 (mod 30) is unproven. The pair m ≡ ±11 (mod 30)
-  contains the cell (1, 1) at n = 5 (m ≡ 19) and its negation; whether it is equivalent in triviality to AK(5) has
-  NOT been checked and is not claimed.
-- MS(n, wA m) for n ≥ 6 outside Theorem 3, and AK(n) for n ≥ 3, are unproven.
-- No stable-AC statement is made or used. Lisitsa's 2025 stable AK(3) claim was withdrawn in the published version (§5).
-- The AC conjecture itself is not addressed.
-- Search failures (§6) are NOT evidence of non-triviality.
+The $n=3,4$ classifications are `MS3_wA` and `MS4_wA` in `N3.lean` and `N4.lean`. For $n=5$, write $m=5q+j$. The lemma `MS_wA_reduce` reaches the word $u=y^{-j}xy^{j-q}x^{-1}$. For each of the following six certificates, Table 2 of Fagan et al. marks the stated benchmark word $w$ **trivial** in column $n=5$. When $u=y^a x y^b x^{-1}$ and the table gives $w=x^{-1}y^a x y^b$, the second relation words satisfy $xw^{-1}=x^{-1}(xu^{-1})x$. Thus each match preserves ordinary AC reachability with the first relation fixed. [Source certificates](lean/ACProof/N5.lean) · [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+| Residue | Base $m$ | $(q,j)$ | Published row word $w$ | Lean certificate | Search transitions |
+|---:|---:|:---:|---|---|---:|
+| 2 | 2 | (0, 2) | $x^{-1}y^{-2}xy^2$ | `MS5_wA_m2` | 52 |
+| 3 | 3 | (1, −2) | $y^2xy^{-3}x^{-1}$ | `MS5_wA_m3` | 30 |
+| 9 | −21 | (−4, −1) | $yxy^3x^{-1}$ | `MS5_wA_m9` | 96 |
+| 21 | −9 | (−2, 1) | $x^{-1}y^{-1}xy^3$ | `MS5_wA_m21` | 44 |
+| 27 | −3 | (−1, 2) | $x^{-1}y^{-2}xy^3$ | `MS5_wA_m27` | 28 |
+| 28 | −2 | (0, −2) | $y^2xy^{-2}x^{-1}$ | `MS5_wA_m28` | 54 |
+
+The counts refer to transitions emitted by the search. A transition multiplying by an inverse relator can expand into several official moves. Each certificate also supplies the initial reduction and a final normalization to the ordered standard pair. Theorem 1 transfers the six cases to every integer in their classes.
+
+**Two further literature cases.** For $m=4$ take $(q,j)=(1,-1)$, giving $yxy^{-2}x^{-1}$. For $m=-4$ take $(-1,1)$, giving $y^{-1}xy^2x^{-1}$, whose second relator is conjugate as above to that of the row $x^{-1}y^{-1}xy^2$. Both published rows are trivial. Theorem 1 extends this paper deduction to classes 4 and 26, outside the 18 covered by the Lean theorem `MS5_wA`. [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+### 2e. Remaining cases
+
+For $n=5$, the AC-triviality of classes 7, 8, 13, 14, 16, 17, 22 and 23 remains undecided by these results. Theorem 5 ties classes 11 and 19 to the open AC-triviality of AK(5). At $n=3$, the remaining classes $\pm5$ have the triviality of AK(3). At $n=4$, the same holds for $\pm9$ and the classification in Theorem 4 leaves $\pm3,\pm7$ undecided. At higher $n$, Theorems 3 and 5 apply in their specified classes. These results leave the general AC conjecture open.
 
 ## 3. Paper proofs (human-checkable without Lean)
 Let G = F(x,y)/⟨⟨r0⟩⟩, r0 = x⁻¹yⁿxy^{-(n+1)}, K: x⁻¹yⁿx = y^{n+1}; r1(m) = x·wA(m)⁻¹ = x·x y^{-m} x⁻¹ y^m.
 AC fact (Lean `reach_slot1_mod`, `reach_slot1_conj`): if the image of r1' in G is conjugate to the image of r1, then
 (r0, r1) ~ (r0, r1').
+
+**Proof of Theorem 5.** Put $m=-(2n+1)=-2n-1$. Apply `MS_wA_reduce` with $(q,j)=(-2,-1)$ to reach $\mathrm{MS}(n,yxyx^{-1})$. Its second relator is $r=x^2y^{-1}x^{-1}y^{-1}$. Conjugating by $x^{-1}$ gives $x^{-1}rx=xy^{-1}x^{-1}y^{-1}x=xw_0^{-1}$. The first relator stays fixed. Apply `MS_wk_equiv n 0 1`, then reverse `AK_reach_MS` to reach $\mathrm{AK}(n)$. For each $t\in\mathbb Z$, precompose this chain with the reverse of `MS_wA_period_mul` to start at $m+t n(n+1)$. Applying the sign-transfer lemma in both directions gives the equivalence of triviality on the positive class. [Formal proof](lean/ACProof/AKFamily.lean)
 
 **Theorem 1.**
 Step 1 (period). From K: x y^{n+1} x⁻¹ = yⁿ, hence (i) x y^{(n+1)k} x⁻¹ = y^{nk} and (ii) y^{nk} x = x y^{(n+1)k}.
@@ -174,7 +150,7 @@ MS(n, wA(−m)).
 
 ## 4. Appendix — proof B of Theorem 2 and the certified search paths
 Proof B uses the shift MS(2, v(q)) ~ MS(2, v(q+3)) (BS(2,3) identity: xy³x⁻¹ = y², y⁴x = xy⁶, y⁶ = xy⁹x⁻¹ commutes with
-xy^{q-1}x⁻¹), bases q = 0 (w⋆), q = 1 (y⁻¹) and the explicit 19-move path for q = −1:
+xy^{q-1}x⁻¹), bases q = 0 (w⋆), q = 1 (y⁻¹) and 19 search transitions for q = −1 followed by a final inversion:
  • m = 5 ≡ -1: write -1 = (-1)·2 + 1, reduction mod 2 gives the second relator for v(-1) = y⁻¹ x y² x⁻¹. Explicit path
    (r0, r1) = (Xyy x YYY, xxYYXy) [X = x⁻¹, Y = y⁻¹]; "c_i g" = conjugate relator i by g (g r g⁻¹);
    "i/j" = r_i·r_j⁻¹; "i·j" = r_i·r_j; "inv i"; words reduced cyclically-free only where the move does so:
@@ -184,10 +160,10 @@ xy^{q-1}x⁻¹), bases q = 0 (w⋆), q = 1 (y⁻¹) and the explicit 19-move pat
    15 0·1 → (X, ·)   16 inv 1 → (·, yXX)   17 1/0 → (·, yX)   18 1/0 → (X, y), then inv 0 → (x, y).
    Each line can be checked by free reduction by hand (e.g. step 2: yxYYYXy·(xxYYXy)⁻¹ = yxYYYXy·YxyyXX = yxYXX).
 
-The n = 3, 4 bases (52/21/45 and 25/49/50/26/132 moves) were found by greedy search (`search/greedy.py`).
-`search/emitn2.py` turns each move into one official `Step`, and Lean checks each one (`Tactics.lean`).
+The $n=3,4$ paths were generated by greedy search. The Lean proofs replay the transitions as ordinary AC paths and normalize the final generator pair to `standard 2`. [Proof tactics](lean/ACProof/Tactics.lean)
 
-## 5. Sources (verified; version, theorem numbers, use)
+## 5. Sources
+
 | Key | Work | Version checked | Used for |
 |---|---|---|---|
 | [AC] | J.J. Andrews, M.L. Curtis, Free groups and handlebodies, Proc. AMS 16 (1965) 192–195 | journal | statement of the conjecture |
@@ -197,7 +173,7 @@ The n = 3, 4 bases (52/21/45 and 25/49/50/26/132 moves) were found by greedy sea
 | [MMS] | A.D. Myasnikov, A.G. Myasnikov, V. Shpilrain, On the Andrews–Curtis equivalence, Contemp. Math. 296 (2002) 183–198 | arXiv:math/0302080v1 | Prop 1.1 (AK(2)), Prop 1.3 (AK(n) ~ MS(n, w_1)) |
 | [SMF] | A. Shehper, A. Medina-Mardones, et al., S. Gukov, What makes math problems hard for reinforcement learning: a case study | arXiv:2408.15332v2 (11 Feb 2025) | Thm 2, 3, Prop 5, Thm 6, 7, Cor 9; §3 (length-14 MS(3,·) ~ AK(3)) |
 | [Car] | J. Carreras, Machine-checkable equivalence certificates at the length-14 Andrews–Curtis frontier | arXiv:2607.23611v1; repo joe-carr-data/ac-certificates @ d347fc47 (Python verifier, no Lean) | Thm 4: MS(3, y⁻¹x²y⁻¹) ~ AK(3) |
-| [Fag] | L. Fagan, M. Tarquini, A. Shehper, et al., S. Gukov, The Two-Hump Problem | arXiv:2606.21611v1; repo Math-AI-Caltech/ACSolverX @ 6a12515f (JAX, no Lean) | App. F classes 13₁ (AK(3)), 15₁ |
+| [Fag] | L. Fagan, M. Tarquini, A. Shehper, et al., S. Gukov, The Two-Hump Problem | arXiv:2606.21611v1; repo Math-AI-Caltech/ACSolverX @ 6a12515f (JAX, no Lean) | App. F, Table 2 (six certified $n=5$ cases, $\pm4$ and class $16_1$), plus classes $13_1$ and $15_1$ |
 | [PU] | D. Panteleev, A. Ushakov, Conjugacy search problem and the Andrews–Curtis conjecture | arXiv:1609.00325 | Lemma 3.1 (automorphisms preserve AC-triviality), Thm 2.3, Prop 3.7 / Cor 3.8 (standard techniques) |
 | [My] / [HR] | A.D. Myasnikov, IJAC 9 (1999) 671–686; G. Havas, C. Ramsay, IJAC 13 (2003) 61–68 | journal (web copy for [HR]) | prior trivializations of MS(2, y^{±1}xy^{±1}x⁻¹), i.e. our m = ±1, ±5 at n = 2 |
 | [Sn] | R. Sneiderman, Explicit AC constructions for divisibility subfamilies of square presentations, SAIR ACC-P000002 (https://competition.sair.foundation/contributor-network/acc/ACC-P000002, published 2026-09-13; claim is about G(p,s) only); package github.com/Robby955/ac-square-divisibility | tag v0.1.0 → d0ed2c06 (identified, not linked from the entry); relevant files unchanged at HEAD b157f43f | auxiliary Lean modules on P(n,a,b,c) in the package (not stated in the entry) imply our Thm 1–3 at triviality level (§5b; NOVELTY.md §B′) |
@@ -227,6 +203,7 @@ The n = 3, 4 bases (52/21/45 and 25/49/50/26/132 moves) were found by greedy sea
 - *Results.*
   - `a_period` (period n in a) and `b_period` (period n+1 in b);
   - `residue_solvable_iff` (triviality depends only on (a mod n, b mod n+1));
+  - `ParameterShift.shift_steps` (an ordinary path shifting $(a,b)$ to $(a-nt,b+(n+1)t)$);
   - `zero_a_solvable`, `zero_b_solvable`, `uniform_family` (cell (n−1,1));
   - `YInversion.solution` ((a,b,c) ⇒ (−a,−b,−c));
   - `all_parameters_two` (all of n = 2).
@@ -241,12 +218,10 @@ The n = 3, 4 bases (52/21/45 and 25/49/50/26/132 moves) were found by greedy sea
   - Our n = 3, 4, 5 certificates cover the cells (1,2), (2,2) at n = 3, (2,1)–(2,4) at n = 4 and (3,2), (2,3),
     (3,3), (2,4), (1,3), (4,3) at n = 5. Their stated theorems do
     not cover these cells.
-  - Our AK(3)/AK(4) links concern the cell (1,1).
+  - The negative AK class in Theorem 5 reaches the cell (1,1) via `shift_steps` at $t=2$.
 - *Their own novelty statement.* Their PRIOR_WORK.md disclaims novelty of substitution and automorphism techniques.
 
-**Not checked:** exhaustive Google Scholar; Myasnikov 1999 and Havas–Ramsay data files; the Fagan/Carreras datasets
-(which may contain our n = 3, 4 cells); the OpenReview full text of [GZ]; Sneiderman's paper beyond keyword search and
-his research supplements. Full record: NOVELTY.md and research/lit/ (map.md, log.md, extracts.json, report.html).
+The $n=5$ comparison uses the published word rows in Table 2. The prior-art record gives the versions consulted and the limits of the older $n=3,4$ searches. [Prior-art record](NOVELTY.md)
 
 ## 6. Search record for open classes (experiments, not results)
 - Search effort without success: line-wise greedy (4M nodes, maxlen 40); cyclic-canonical search (states = unordered
@@ -258,10 +233,8 @@ his research supplements. Full record: NOVELTY.md and research/lit/ (map.md, log
 - Identity search: using a Britton-reduction word-problem solver for BS(3,4), no G-conjugacy r1(m) ~ r1(m')^{±1}
   links residues {1,2,5,7,10,11} to any other residue (conjugators up to length 7, |m'| ≤ 40). So the period and ψ-symmetry
   appear to be the only cheap reductions of this "relator-1-conjugacy" type.
-- n = 5 (2026-11-18): the line-wise best-first search (`search/classes.py`, maxlen 30, up to 8 reduced
-  representatives per class) solved the pairs m ≡ ±2 (52 moves) and m ≡ ±3 (30 moves) already at a 200k-state
-  budget; a full 2M-state pass over all classes additionally solved m ≡ ±9 (96 moves, representative m = −21)
-  and m ≡ ±21 (44 moves, representative m = −9), and found no path for the pairs {4, 26}, {7, 23}, {8, 22},
-  {11, 19}, {13, 17}, {14, 16} (mod 30).
+- At $n=5$, the November 18 search produced six certificates for the signed representatives listed in §2d. A failed search at $m=\pm4$ coexists with published trivializations of the corresponding short representatives. The path certificates and the published table give the evidence used here.
 
+## AI assistance
 
+AI tools assisted with Lean formalization, path search, the literature comparison and drafting. Fable contributed to the English proof of Theorem 5 and the statement of its relationship to prior work. The Lean build and axiom audit provide the verification of the formal claims.

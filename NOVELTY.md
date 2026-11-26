@@ -1,5 +1,15 @@
 # Novelty record
 
+## v1.3 assessment (2026-11-27 JST)
+
+**Uniform AK reduction.** The Lean theorem applies to all natural $n$ and $m=-(2n+1)+tn(n+1)$ for every integer $t$. At $n=0$ this specifies $m=-1$. In the classical range $n\ge2$, the path to AK(n) at $m=-(2n+1)$ follows from the parameter step $(2n+1,-2n-1,0)\to(1,1,0)$ in Sneiderman’s auxiliary Lean package (`shift_steps`, $t=2$). In the resulting presentation the second equation is $x^2=yxy$, the equation of $\mathrm{MS}(n,w_0)$. Shehper et al., Theorem 6, connects $w_0$ to $w_1$, and Myasnikov–Myasnikov–Shpilrain, Proposition 1.3, connects that tuple to AK(n). Our independent Lean proof states the composite in $w_A$ coordinates. It extends it to the negative periodic class with `MS_wA_period_mul` and transfers AC-triviality to the positive class. Thus the specialized AK(4) conclusion of v1.1 also follows from the published ingredients. [Sneiderman, tagged source](https://github.com/Robby955/ac-square-divisibility/blob/v0.1.0/lean/ACParameterShift.lean) · [Shehper et al.](https://arxiv.org/html/2408.15332v2#S3.SS5) · [Myasnikov et al.](https://arxiv.org/pdf/math/0302080)
+
+**Finite benchmark matches at $n=5$.** Fagan et al., Appendix F, Table 2, marks all six finite representatives certified in `N5.lean` as trivial. The manuscript lists the exact row word and the corresponding Lean theorem for each match. The residue 9 certificate starts at $m=-21$ and the residue 21 certificate at $m=-9$. A row whose second word is written $x^{-1}y^a x y^b$ matches the reduced word $y^a x y^b x^{-1}$ by conjugating the full second relator. The evidence supports independent Lean certificates for three signed pairs and a parameterized theorem, with no priority claim for their AC-triviality. The other twelve classes inside `MS5_wA` follow from Sneiderman’s general families and are also certified in Lean. [Six-row comparison, §2d](draft_writeup.md#2d-certified-residue-classes-and-published-benchmark-words) · [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+The same table gives trivial representatives for $m=4$ and $m=-4$ after reduction. Combined with periodicity, this is a literature deduction for classes 4 and 26 outside the 18-class Lean theorem. For $m=-11$, the row $yxyx^{-1}$ lies in class $16_1$ with $yxyx^{-1}y^{-1}$, whose second relator is a cyclic conjugate of that for $w_1$. This gives a finite antecedent to the $n=5$ AK identification. The formal path reaches AK(5) for $m\equiv19\pmod{30}$, and the formal triviality equivalence applies to 11 and 19. [Fagan et al., Table 2](https://arxiv.org/html/2606.21611v1#A6.T2)
+
+**Submission history.** ACC-P000018 already published the period, $n=2$ result, partial $n=3,4$ results and specialized AK links. The six $n=5$ certificates and the uniform AK reduction constitute the additions to that entry. The dated notes below preserve earlier searches and their verdicts as of those dates. The v1.3 assessment supersedes their provisional statements about the $n=5$ cells and the AK(4) link. [Prior submission](https://competition.sair.foundation/contributor-network/acc/ACC-P000018) · [Public v1.2 source](https://github.com/suii00/sair-acc-proof/tree/fcb2bca47bdee8bde0f1d55cce18318430cdac15)
+
 ## v1.1 update (2026-10-20 JST) — George/Zhao, Sneiderman, Lisitsa correction, Carreras/Fagan repos
 Method and sources: research/lit/ (map.md, log.md, extracts.json, report.html; the source copies in research/lit/sources/
 are not committed).
@@ -71,7 +81,7 @@ https://openreview.net/forum?id=lt3Lpa4d2d (full text not retrieved: bot check).
   - **n = 3, 4, 5 certified residues:** our solved residues map to their grid cells (a mod n, b mod n+1) by CRT.
     - Cells their stated theorems cover: a ≡ 0, b ≡ 0, (n−1, 1), (1, n). For n = 3 that is m ≡ 0,1,3,4,6,8,9,11 (mod 12);
       for n = 4, m ≡ 0,1,4,5,8,10,12,15,16,19 (mod 20); for n = 5, m ≡ 0,1,5,6,10,12,15,18,20,24,25,29 (mod 30).
-    - **Cells only we certify** (by Lean-checked search paths): n = 3, m ≡ 2, 10 (cells (1,2), (2,2)); n = 4,
+    - **Cells beyond that package’s stated coverage** (certified by our Lean search paths): n = 3, m ≡ 2, 10 (cells (1,2), (2,2)); n = 4,
       m ≡ 2, 6, 14, 18 (cells (2,2), (2,1), (2,4), (2,3)); n = 5, m ≡ 2, 3, 9, 21, 27, 28
       (cells (3,2), (2,3), (1,3), (4,3), (3,3), (2,4)).
     - I found none of these in their Lean files (`presentation 3`/`presentation 4` occur nowhere) or README. Their paper
@@ -180,8 +190,8 @@ x⁻¹y⁻¹x²y⁻¹, i.e. the relation x = y⁻¹x²y⁻¹. So **MS(3, wA 5) i
 | `MS_wA_cover`, `MS_wA_mult`, `MS_wA_mult_succ`, `MS_wA_pm_one` | **novelty unconfirmed; corollary-level** | Short arguments from standard lemmas. Finitely many instances appear as "trivial" in the Shehper/Fagan benchmark tables. No infinite-family statement found. |
 | `MS_wA_negate` (y ↦ y⁻¹ transfer) | **KNOWN principle** | Automorphism invariance of AC-triviality: PU Lemma 3.1 with its citations; Lisitsa 2025; Carreras 2026 uses the same σ. |
 | `MS2_wA_all` / `MS2_wA_all'` (n = 2, all m) | **novelty unconfirmed; instances known** | The m ≡ ±1, ±5 instances (length 12) are in Myasnikov 1999 / Havas–Ramsay 2003, and benchmark instances are trivial in Shehper/Fagan. I found no statement for all m ∈ ℤ. |
-| `MS5_wA` (n = 5; m mod 30 ∉ {4,7,8,11,13,14,16,17,19,22,23,26}) | **novelty unconfirmed; not found in the sources checked** | Sneiderman's stated theorems cover exactly the complementary 12 classes at n = 5. Mulay's ACC-P000013 (read in full 2026-11-18) treats only the line w = w_A(1), quantitatively (explicit Θ(2^n) trivializations, a record law, a matrix lower bound), with no Lean formalization and no residue classification. The Shehper/Fagan benchmark tables were not checked for n = 5 instances, so finite instances may exist there. The pair m ≡ ±11 (mod 30), containing the cell (1,1) at n = 5, was not solved; no AK(5) link is claimed. |
+| `MS5_wA` (n = 5; m mod 30 ∉ {4,7,8,11,13,14,16,17,19,22,23,26}) | **novelty unconfirmed; not found in the sources checked** | Sneiderman’s general families account for 12 of the 18 classes in our $n=5$ theorem. Mulay's ACC-P000013 (read in full 2026-11-18) treats only the line w = w_A(1), quantitatively (explicit Θ(2^n) trivializations, a record law, a matrix lower bound), with no Lean formalization and no residue classification. The Shehper/Fagan benchmark tables were not checked for n = 5 instances, so finite instances may exist there. The pair m ≡ ±11 (mod 30), containing the cell (1,1) at n = 5, was not solved; no AK(5) link is claimed. |
 
-**Recommended wording for the manuscript:**
+**Historical wording proposed at the time of this search (superseded by the assessments above):**
 - Present the AK(3) link as an independent formal proof of a known fact, citing Shehper et al. v2 §3 and Carreras 2026 Thm 4.
 - Present the period and n = 2 all-m results as "not found in the literature checked", with the standard-technique caveat.

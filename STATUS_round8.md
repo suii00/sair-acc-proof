@@ -1,5 +1,7 @@
 # Round 8 status (2026-11-18 JST) — n = 5 extension (v1.2)
 
+> Historical v1.2 report. The v1.3 [manuscript](draft_writeup.md) and [prior-art record](NOVELTY.md) update the benchmark matches, the AK(5) identification and the interpretation of the search-transition counts below.
+
 ## Proven in Lean (full `lake build AC ACProof` OK, warningAsError, no sorry/admit,
 ## #print axioms = [propext, Classical.choice, Quot.sound]; official AC.lean unmodified)
 - N5.lean (new): certified search paths MS5_wA_m2 (52 moves, w_A(2) itself),
