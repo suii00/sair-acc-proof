@@ -7,6 +7,7 @@ import ACProof.AK3Link
 import ACProof.AK4Link
 import ACProof.AKFamily
 import ACProof.Comparison
+import ACProof.EuclideanWitness
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
 #print axioms AC.reach_mul_normalClosure
@@ -80,3 +81,39 @@ import ACProof.Comparison
 #print axioms AC.MS_wA_pm_iff_AK
 #print axioms AC.MS5_wA_19_reach_AK5
 #print axioms AC.MS5_wA_11_19_iff_AK5
+
+#print axioms AC.euclideanCost_comm
+#print axioms AC.euclideanCost_zero_left
+#print axioms AC.euclideanCost_zero_right
+#print axioms AC.euclideanCost_add_left
+#print axioms AC.euclideanCost_one_right
+#print axioms AC.euclideanCost_mulRight
+#print axioms AC.euclideanCost_add_left_le
+#print axioms AC.euclideanCost_le_add_left
+#print axioms AC.euclideanCost_add_right_le
+#print axioms AC.euclideanCost_le_add_right
+#print axioms AC.CountedStep.step
+#print axioms AC.Step.exists_countedStep
+#print axioms AC.reachable_iff_exists_countedPath
+#print axioms AC.CountedPath.mulCount_le_length
+#print axioms AC.CountedStep.euclideanPotential_bound
+#print axioms AC.Step.euclideanPotential_bound
+#print axioms AC.CountedPath.euclideanPotential_bound
+#print axioms AC.expY_gx
+#print axioms AC.expY_gy
+#print axioms AC.euclideanPotential_standard
+#print axioms AC.euclideanPotential_AK
+#print axioms AC.AK_to_standard_mulCount
+#print axioms AC.standard_to_AK_mulCount
+#print axioms AC.shearTuple_exact
+#print axioms AC.expX_gx
+#print axioms AC.expX_gy
+#print axioms AC.standard_hasIdentityExponents
+#print axioms AC.AK_to_identityExponents_nonmul
+#print axioms AC.CountedPath.strict_euclideanPotential_bound
+#print axioms AC.AK_to_identityExponents_mulCount
+#print axioms AC.AK_to_identityFiber_mulCount
+#print axioms AC.AK_to_standard_mulCount_sharp
+#print axioms AC.AK_identityExponentMatrix_witness
+#print axioms AC.AK_identityFiber_exact
+#print axioms AC.AK_to_standard_length

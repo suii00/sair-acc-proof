@@ -4,6 +4,12 @@ Lean 4 formalization of AC-triviality results for Miller–Schupp presentations 
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
 
+## Directed distance for the Akbulut–Kirby exponent matrix
+
+For every $n\geq 0$, the shortest ordinary AC path from the ordered Akbulut–Kirby pair $R_n$ to **any pair with identity exponent-sum matrix** has length $n+4$. One explicit path uses $n+2$ right multiplications and two inversions, simultaneously minimizing both counts. Every path to the ordered free generators $(x,y)$ therefore has length at least $n+4$. Existence of such a trivialization for general $n$ remains open. [Proof and references](submission/description_euclidean_ak.md) · [Lean theorems](lean/ACProof/EuclideanWitness.lean) · [Build and axiom audit](logs/build_euclidean_ak.log)
+
+Run `scripts/reproduce.sh` for the kernel check. For an independent check of the first thirteen matrices, run `python3 research/euclidean-ak/check_distance.py`.
+
 ## v1.3 submission candidate
 
 For every $n\in\mathbb N$ and $t\in\mathbb Z$, the ordered presentation $\mathrm{MS}(n,w_A(m))$ reaches $\mathrm{AK}(n)$ by ordinary Andrews–Curtis moves when $m=-(2n+1)+tn(n+1)$. For $m=\pm(2n+1)+tn(n+1)$, the two presentations have equivalent AC-triviality. For $n>0$ these are residue classes modulo $n(n+1)$. In the classical range $n\ge2$ the proof identifies an explicit parameter in the theorems of Sneiderman, Shehper et al., and Myasnikov–Myasnikov–Shpilrain. [Lean proof](lean/ACProof/AKFamily.lean) · [Manuscript](draft_writeup.md)
