@@ -4,6 +4,18 @@ Lean 4 formalization of AC paths for Miller–Schupp presentations and lower bou
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
 
+## Exactly three conjugations for AK(2)
+
+The minimum number of arbitrary-word conjugations taking the ordered AK(2) relators to $(x,y)$ is three. Lean verifies the lower bound and two explicit paths. For every $n\ge2$, any such path for AK($n$) requires at least three conjugations and $n+7$ total moves. [Proof and move ledger](submission/description_ak2_three_conjugations.md) · [Lean witnesses](lean/ACProof/AK2ConjExact.lean) · [Uniform lower bounds](lean/ACProof/AKThreeConjugations.lean) · [Build and axiom audit](logs/build_ak2_three_conjugations.log)
+
+With exactly three conjugations, the shortest path has 13 moves. The smallest possible peak of the sum of the two freely reduced relator lengths is 17, attained by a 15-move path. The following commands reproduce the exhaustive checks and the Lean build.
+
+```sh
+python3 research/ak2-three-conjugations/length_check.py
+python3 research/ak2-three-conjugations/peak_check.py --cross-check
+bash scripts/reproduce.sh
+```
+
 ## Conjugations in ordinary Akbulut–Kirby trivializations
 
 The ordered pair $\mathrm{AK}(1)$ requires exactly two conjugations to reach $(x,y)$ under the official ordinary moves. Its shortest ordinary path has length nine. One path simultaneously minimizes all three counts with five right multiplications, two inversions and two conjugations. For every $n\ge1$, any ordinary trivialization of $\mathrm{AK}(n)$ needs at least two arbitrary-word conjugations and $n+6$ total moves. [Submission text and proofs](submission/description_ak_conjugations.md) · [Four-point certificate](lean/ACProof/AK1ConjLower.lean) · [Nine-move witness](lean/ACProof/AK1ConjUpper.lean) · [Shortestness](lean/ACProof/AK1Distance.lean) · [Uniform theorem](lean/ACProof/AKProjective.lean) · [Build log](logs/build_ak_conjugations.log)

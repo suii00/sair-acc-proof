@@ -1,0 +1,211 @@
+AK(2) exact conjugation count — clean build and axiom audit
+Started UTC: 2026-11-27T06:02:08+00:00
+
+Pinned inputs
+Official source: https://github.com/SAIRcompetition/Andrews-Curtis/commit/a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
+Official AC.lean SHA-256: 927ba318d26b06c312140117b2a4856373832ed2c043944f520ec7337bcfca1b
+Toolchain: leanprover/lean4:v4.29.1
+Lean (version 4.29.1, arm64-apple-darwin24.6.0, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)
+Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+Mathlib: 5e932f97dd25535344f80f9dd8da3aab83df0fe6
+Resolved dependency git revisions verified: 9/9
+Lake manifest SHA-256: c4d663bed06082fcb83a06bd5baffe00fef5fa6eff2c058e4ef5f938f232f413
+Official Lean options: autoImplicit=false, warningAsError=true
+
+Reproduction
+From the proof repository, run: bash scripts/reproduce.sh
+For this run an empty project received AC.lean, lean-toolchain and lakefile.toml
+directly from the pinned upstream git objects. Only the ACProof library stanza
+from scripts/reproduce.sh was appended. Only lean/ACProof/*.lean were copied.
+The pre-fetched dependency manifest and .lake/packages directory were reused.
+No AC or ACProof .olean files were imported into the fresh build directory.
+Commands: lake build AC ACProof ; lake env lean ACProof/Check.lean
+
+ACProof source SHA-256 manifest (38 modules, sorted by filename)
+1def8bf0fea50bbb9f957285e5197be7fe2878647954fa3831bfeb6c1f78b54f  AK.lean
+6aa0deb2f114d2e3a767f28e754b959508797299538f34daef074b57f133e5eb  AK1ConjLower.lean
+3ff4fca7574f137c49b3b5af0970266813317b9d53cf1df497a5db75f98c705e  AK1ConjUpper.lean
+6ba2f284193836a445dcb0444a569a39532be03ca10eced460f0d401aec5f926  AK1Distance.lean
+0f42fb46971dafb358cf6c491a0ee79506c754cce7f04c54f83335a7ec97b74f  AK1MulLower.lean
+2b9634bb3d545ead3c64269c878e3801fb54af3f8c6f3a9388d8c318acdb222f  AK1MulParity.lean
+ebc9c016ec99ee6c3d5c531278d2a73635a4369b2fc210bf2be12570690cd349  AK2ConjExact.lean
+aac0aeb470dcdf2f1b38211f9a9cb46fa9c8842fb502e37de16e90b734c1fae6  AK3Link.lean
+206db07795e6259347a42a86dc98508fc355f973921a7e012f2210a4837682f7  AK4Link.lean
+f589384c52a1edd35c30b381f2e52228374092f451b4732ecc6498be22f0ae36  AKFamily.lean
+625894cce23b921cc3416410a17b1462254327962e49218758aa0c4872cf5f2a  AKProjective.lean
+c9b0724b5141c8d77e8a1f1e7124d2427cfd865524bbc57454518c7e0ec68596  AKThreeConjugations.lean
+062b45b44ab186aa91fd5acd5dccf553e2f20e98eab1851fa29ccf762f8ecf5d  Basic.lean
+84a3c3abd272c40acdc304b761b749d260c9416c6b68d9be54326b0b6c3092d0  Check.lean
+2e9460e58d1ed545176259c730d955044a638c8a301e9b67397747d7cc4764b6  Comparison.lean
+9dbf48c9aff9fa64511db5996351aacbcb7029d1a6ffdf8916da1b3e219ac642  ComplementaryInvolutions.lean
+6bd7ba25859cfa674906e1f3465b99a4a886a4bd1f8a40c0ef4a7bf6a0666974  ConjugationLength.lean
+10ed56bef42df7690f14e0c5dabd78d4a885a40a618eb14515f4fce960004aba  ConjugationTrace.lean
+4ea15b7633a02c4813629e5a35b7f22d73da3579407f810bb0ebd5274e501a67  Consequence.lean
+e06b105888dee8cca2edcecd1f6e9f2980d775013c6230fe53613b994bec114d  EuclideanCost.lean
+749b4c6636493912f5756b532166e5575bc158d5abcab3c44f5ae90f7bfeda2d  EuclideanOrientation.lean
+f04ecb025381c9dcd9996cbe173205663068d834acebadc2d34357c6a111ef6a  EuclideanPaths.lean
+4aa8505f1ebb70e2e1799b5336fe0ed9f0d5517007f04ec3437e45d419fdcd59  EuclideanSharp.lean
+dc92b9de62d948272a1b817a46aab43d8104a15976c21e54c2cd3260871f171f  EuclideanWitness.lean
+57a6071cc2ac2a8855540fe995afb4ce8b504418c9b50c420ae5f30b72f7a1bf  General.lean
+0d8770059851e14a6115995a3915de7fb641f2bae47b8b73f089fa5ba45ddb3d  MS1.lean
+8e4b94fbe18ee97a1c248fd529543f93a5b2962fac9db8e603d0e16967433f25  MS2.lean
+0c1bd2d2609d5d0580248004b8f903af1a971143ce80510342bd5cb29e88f90c  MS2All.lean
+c645e55637731b83f20b12b99fe2449c9671f769f835e26865d8e7036b15b55e  MS2Alt.lean
+d5229e056300e04f7e1abd2e99de1031b55bcc11fa56807354437b909d3f2569  MSwk.lean
+50cf5f46c548092555d1ae555fa616e656f201f89d9f69b5a15d34ff935133c3  MillerSchupp.lean
+ababe7121e246624e3a359d46d25e1469721edc0dd1c66e1d5c89c5700d83086  N3.lean
+3e1e16d3caa11b1d1c1f234d54dcd207abe22dab3a699eabae0c653a9a0c721f  N4.lean
+eee85cc8d39d6e4f901bfba6b89e24b7aab28ae4b73cfe9ec51846109d1aa0ab  N5.lean
+65db80554b92c9ba0c027e5260c68f663d957cd75c8ef767f189411a97b14cff  NewFamilies.lean
+cbbe6b13e8c91c8b95c112ad8a68588b895c0a9f11112015696378a9bd5b1952  Period.lean
+3810cb1268686832cdaefaefa3cfaad2c779fec00abfd8066b392a3c23dab46b  Tactics.lean
+858b3909031781a471e25d94771cd48980381f7f3cd1f647e15f9842fe507120  TwoInvolutions.lean
+
+Result
+Build completed successfully (8288 jobs).
+Project modules rebuilt in the fresh root: AC and 38 ACProof modules
+Proof placeholder tokens (sorry/admit) in all 38 ACProof source files: 0
+Axiom reports: 137/137, each matched to its #print directive in order
+Outside {propext, Classical.choice, Quot.sound}: 0
+Warnings/errors from the build and the separate audit: 0
+Finished UTC: 2026-11-27T06:05:06+00:00
+Elapsed: 178.5 seconds
+
+Axiom audit (in ACProof/Check.lean order)
+'AC.ComplementaryInvolutions.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_three_conjugations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_length_add_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_threeConjugations_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_threeConjugations_short_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_conjCount_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_mul_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.presentsTrivialGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.reach_mulLeft' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Reachable.relabel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS1_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wstar_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wk_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_reach_MS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK2_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_reach_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_ypow_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negsucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_of_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_mult_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_negate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_pm_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_v_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS2_wA_all'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_m1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_m19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.link_identity' depends on axioms: [propext, Quot.sound]
+'AC.phi_MS3_wA5_reach_wk8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA5_iff_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS3_wA_of_AK3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.bs_pow' depends on axioms: [propext]
+'AC.link4_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.phi_MS4_wAm9_reach_wkm9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wAm9_iff_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS4_wA_9_11_of_AK4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reach_SnPres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.SnPres_reach_MS_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m27' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m28' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_m21' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_period_reach_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS_wA_pm_iff_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_19_reach_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MS5_wA_11_19_iff_AK5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanCost_comm' depends on axioms: [propext, Quot.sound]
+'AC.euclideanCost_zero_left' depends on axioms: [propext, Quot.sound]
+'AC.euclideanCost_zero_right' depends on axioms: [propext, Quot.sound]
+'AC.euclideanCost_add_left' depends on axioms: [propext, Quot.sound]
+'AC.euclideanCost_one_right' depends on axioms: [propext, Quot.sound]
+'AC.euclideanCost_mulRight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanCost_add_left_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanCost_le_add_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanCost_add_right_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanCost_le_add_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.CountedStep.step' depends on axioms: [propext, Quot.sound]
+'AC.Step.exists_countedStep' depends on axioms: [propext, Quot.sound]
+'AC.reachable_iff_exists_countedPath' depends on axioms: [propext, Quot.sound]
+'AC.CountedPath.mulCount_le_length' depends on axioms: [propext, Quot.sound]
+'AC.CountedStep.euclideanPotential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.Step.euclideanPotential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.CountedPath.euclideanPotential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.expY_gx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.expY_gy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanPotential_standard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.euclideanPotential_AK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_standard_mulCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.standard_to_AK_mulCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.shearTuple_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.expX_gx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.expX_gy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.standard_hasIdentityExponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_identityExponents_nonmul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.CountedPath.strict_euclideanPotential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_identityExponents_mulCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_identityFiber_mulCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_standard_mulCount_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_identityExponentMatrix_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_identityFiber_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_to_standard_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.runMoves_append' depends on axioms: [propext, Quot.sound]
+'AC.conjCount_append' depends on axioms: [propext]
+'AC.PrimitiveMove.step' depends on axioms: [propext, Quot.sound]
+'AC.Step.exists_primitiveMove' depends on axioms: [propext, Quot.sound]
+'AC.runMoves_reachable' depends on axioms: [propext, Quot.sound]
+'AC.reachable_iff_exists_runMoves' depends on axioms: [propext, Quot.sound]
+'AC.AK1_twoConjugations_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1Certificate.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_conjCount_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.commute_sq_of_mem_closure_involutions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.exists_involutions_of_atMostOneConj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.two_le_conjCount_of_involutionImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_length_add_conjCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_length_of_two_conjugations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_conjCount_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_two_conjugations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_length_add_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.mulCount_append' depends on axioms: [propext]
+'AC.AK1Certificate.evalX' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1Certificate.evalY' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK_operation_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_mulCount_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_mulCount_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_min_operation_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.AK1_distance_exact' depends on axioms: [propext, Classical.choice, Quot.sound]

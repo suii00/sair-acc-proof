@@ -166,6 +166,16 @@ private theorem char_x (n : ℕ) : character n gx = X (ZMod (modulus n)) := by
 private theorem char_y (n : ℕ) : character n gy = Y (ZMod (modulus n)) := by
   simp [character, gy]
 
+/-- The projective factor as a reusable marked permutation representation. -/
+theorem exists_marking {n : ℕ} (hn : 0 < n) :
+    ∃ (P : Type) (φ : Word 2 →* Equiv.Perm P),
+      φ (AK n 0) ^ 2 = 1 ∧ φ (AK n 1) = 1 ∧
+      ¬ Commute ((φ gx) ^ 2) ((φ gx * φ gy) ^ 2) := by
+  refine ⟨_, character n, ?_, ?_, ?_⟩
+  · simpa [AK, char_x, char_y] using first_sq n
+  · simp [AK, char_x, char_y, braid]
+  · simpa [char_x, char_y] using squares_not_commute n hn
+
 /-- Every ordinary path from AK(n) to the ordered standard pair needs at least two
 conjugations, counting one for an arbitrary word. -/
 theorem _root_.AC.AK_two_conjugations {n : ℕ} (hn : 0 < n) (ms : List (PrimitiveMove 2))

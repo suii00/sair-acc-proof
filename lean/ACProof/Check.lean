@@ -10,8 +10,15 @@ import ACProof.Comparison
 import ACProof.EuclideanWitness
 import ACProof.AKProjective
 import ACProof.AK1Distance
+import ACProof.AK2ConjExact
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
+#print axioms AC.ComplementaryInvolutions.lower
+#print axioms AC.AK_three_conjugations
+#print axioms AC.AK_length_add_seven
+#print axioms AC.AK2_threeConjugations_witness
+#print axioms AC.AK2_threeConjugations_short_witness
+#print axioms AC.AK2_conjCount_exact
 #print axioms AC.reach_mul_normalClosure
 #print axioms AC.Reachable.presentsTrivialGroup_iff
 #print axioms AC.Reachable.symm
