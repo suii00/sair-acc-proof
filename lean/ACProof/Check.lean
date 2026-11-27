@@ -12,8 +12,14 @@ import ACProof.AKProjective
 import ACProof.AK1Distance
 import ACProof.AK2ConjExact
 import ACProof.MSStarThree
+import ACProof.MSStarRotation
+import ACProof.CyclicRelatorRecovery
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
+#print axioms AC.msStarOneRotated_witness
+#print axioms AC.msStarOneRotated_exact
+#print axioms AC.CyclicRelator.undoRotation
+#print axioms AC.CyclicRelator.recoverRows
 #print axioms AC.MSStarCertificate.odd_lower
 #print axioms AC.MSStar_zero_witness
 #print axioms AC.MSStar_one_witness
