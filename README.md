@@ -4,6 +4,12 @@ Lean 4 formalization of AC paths for Miller–Schupp presentations and lower bou
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
 
+## Common group laws and Andrews–Curtis multiplication cost
+
+A class of groups admits ordinarily trivializable rank-two pairs that agree with the standard pair at every marking and have unbounded stable right-multiplication cost exactly when the class satisfies a nontrivial common group law. An explicit family $Q_L$ has this property in all metabelian groups. At $L=1$ its ordinary and stable minima are both two. At $L=2520$ every permutation representation of degree at most ten sees the standard pair, yet a stable trivialization costs at least sixteen multiplications. [Submission and mathematical proofs](submission/description_metabelian_multiplication_cost.md) · [Full constructions and references](research/finite-probe-cost/README.md)
+
+Run `python3 research/finite-probe-cost/check.py` to check the finite identities, deletion certificates and explicit paths. Run `bash scripts/reproduce.sh` for the Lean certificates. [Python checker](research/finite-probe-cost/check.py) · [Lean two-multiplication path](lean/ACProof/MetabelianTwo.lean) · [Lean family paths and metabelian evaluations](lean/ACProof/MetabelianFamily.lean) · [Build and axiom audit](logs/build_metabelian_multiplication_cost.log)
+
 ## Cyclic rotation of relators and the minimum conjugation count
 
 In rank $n\geq 1$, changing where the relators start changes the minimum number of conjugations needed to reach the ordered standard basis by at most $n-1$. One tuple of positive cyclic words realizes every minimum from $0$ to $n-1$ by rotating selected relators one letter, even when isolated stabilizations are free. For the ordered Miller–Schupp example at $n=1$, rotating the first word from `XyxYY` to `xYYXy` changes the ordinary minimum from three to two. [Proof and references](submission/description_cyclic_relator_cost.md) · [Lean two-row recovery in arbitrary rank](lean/ACProof/CyclicRelatorRecovery.lean) · [Lean proof of the rotated Miller–Schupp example](lean/ACProof/MSStarRotation.lean) · [Build and axiom audit](logs/build_cyclic_relator_cost.log)

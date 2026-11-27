@@ -1,0 +1,35 @@
+# Common group laws and unbounded Andrews–Curtis multiplication cost in rank two
+
+Which group evaluations can agree with the standard pair while the cost of reaching it grows without bound? For a fixed class of groups, this happens exactly when the class satisfies a nontrivial common group law. For example, the explicit pair below with exponent 2520 evaluates to the standard pair in every metabelian group and every permutation group of degree at most ten. Every stable trivialization nevertheless requires at least 16 right multiplications.
+
+Work in the free group $F=F(x,y)$. A marking of a group $G$ assigns any two elements to $x,y$. We count one move when a relator is right-multiplied by a distinct row. Row inversion and conjugation by any word have zero cost. Write $m_{\rm ord},m_{\rm st}$ for the minimum costs to reach the ordered basis $(x,y)$ ordinarily or with free insertion and deletion of isolated generator–relator pairs.
+
+### A lower bound that survives stabilization
+
+For $1\ne u\in[F,F]$ and $L\ge1$, suppose $(x,yu^L)$ has a stable trivialization with $m$ multiplications. Then $L\le F_{m+2}$, where $F_1=F_2=1$ are Fibonacci numbers.
+
+Let $N_S(g)$ be the least number of conjugates of signed basis letters whose product is $g$. This norm is subadditive and invariant under conjugation and inversion. Inserting a generator preserves the norm of old words by inclusion and retraction. Read the path backwards from the basis and give each row its norm as weight. Include two extra weights of one when taking maxima. A reverse multiplication replaces one weight by at most its sum with the distinct helper's weight. The new second-largest weight is at most the old largest. Insertion and deletion of a weight-one row preserve the bounds. Starting from $(1,1)$, induction gives largest weight at most $F_{m+2}$. This adapts Bridson's Fibonacci count for products of conjugates. [Bridson, Lemma 2.7 and Proposition 2.8](https://arxiv.org/pdf/1504.04187#page=10)
+
+Regard $F$ as the right-angled Artin group on two nonadjacent vertices. The nonidentity element $u$ has zero abelianization, so it cannot be conjugate to a power of either generator. Heuer's Theorem 7.2 supplies a homogeneous quasimorphism $h$ of defect at most one with $h(x)=h(y)=0$ and $h(u)\ge1$. Thus $h(yu^L)\ge L-1$. Each conjugate of a signed basis letter has value zero, so the absolute value on a product of $j\ge1$ such factors is at most $j-1$. The $y$-exponent of $yu^L$ is one, hence $N_{\{x,y\}}(yu^L)\ge L$. [Heuer, Theorem 7.2](https://arxiv.org/pdf/1802.01107#page=30)
+
+### Characterization by common laws
+
+Suppose ordinarily trivializable pairs of unbounded stable cost evaluate to the standard pair at every marking into every group of a class $\mathcal K$. Choose a pair of positive cost. Some coordinate differs from its standard generator in $F$. Their quotient gives a nontrivial common law.
+
+Conversely, given such a law in finitely many variables, substitute distinct free generators $y^jxy^{-j}$ of a free subgroup of $F$. The resulting two-variable law $v$ is nontrivial. The center of $F$ is trivial, so $u=[v,t]\ne1$ for some $t\in\{x,y\}$, with $[a,b]=aba^{-1}b^{-1}$. Then $u$ is still a common law and belongs to $[F,F]$. Killing $x$ kills $u$, so $u^{-1}$ is a product of conjugates of $x^{\pm1}$. The first row can supply each factor by conjugation and inversion. Appending the factors to the second row $L$ times and restoring the first gives an ordinary trivialization of $(x,yu^L)$. All its evaluations agree with the standard pair while the Fibonacci bound forces unbounded stable cost.
+
+### An explicit metabelian law
+
+Set $c=[x,y]$, $d=x^{-1}cx$, $w=[c,d]$, and $Q_L=(x,yw^L)$. Write capitals for inverses. The reduced word $w=\mathtt{xyXXYxyxYXXyxY}$ lies in the second derived subgroup, so $Q_L$ agrees with the standard pair in every metabelian group. Taking $L$ divisible by $\operatorname{lcm}(1,\ldots,B)$ also gives agreement for all permutations of degree at most $B$. The bound $B$ matters because free groups are residually finite. For $B=10$, we have $F_{17}=1597<2520\le F_{18}=2584$, giving the stated lower bound of 16.
+
+For every $L\ge1$, we have $2\le m_{\rm st}(Q_L)\le m_{\rm ord}(Q_L)\le 2L+2$. With zero multiplications, rows descended from basis letters remain conjugate to signed generators, whereas the cyclically reduced length of $yw^L$ is $14L-1$. With exactly one multiplication, reading backwards from the basis creates a row with two nonzero exponent sums modulo two. Free inversions and conjugations preserve these entries. An isolated insertion adds a zero column to existing rows, and an isolated deletion removes a column zero on surviving rows. The two-entry row therefore persists, whereas the exponent matrix of $Q_L$ is the identity.
+
+For the upper bound put $a=x$, $b=yxy^{-1}$. The block $W=\mathtt{aBBabAAb}$ represents $w$. Deleting $k$ letters so the remainder freely cancels expresses $W^L$ as a product of $k$ conjugates of deleted letters. Indeed, record $p\ell p^{-1}$ at each deletion, with $p$ the retained prefix and $\ell$ the deleted letter. The first row supplies the inverse factors in reverse order. In `research/finite-probe-cost/check.py`, the deletion masks for $L=2,\ldots,7$ each use $2L+2$ deletions and retain $h=\mathtt{Babb}$ in the first block. To pass from $L$ to $L+6$, insert five masked blocks after that block and append one intact $W$. The five masks delete twelve letters and their retained word $G$ satisfies $hGh^{-1}=W^{-1}$. Thus $hR=1$ implies $hGRW=1$. The checker lists all masks, including four deletions for $L=1$.
+
+At $L=1$, both minima are exactly two. With $p=yx$, $q=yXYx$, free reduction gives $yw=(pyp^{-1})(qyxYq^{-1})(qXq^{-1})$. Multiply the second row by $qxq^{-1}$ and then by $(qy)X(qy)^{-1}$ using the first row. Free moves restore $(x,y)$. The exact minima for general $L$ remain open.
+
+Borovik, Lubotzky and Myasnikov classified the connected components of finite Andrews–Curtis graphs. SAIR submission ACC-P000027 discusses the limits of finite-quotient obstructions. Here the evaluated tuples already agree coordinate by coordinate, and we quantify the cost of trivializing their lifts to the free group. [Borovik–Lubotzky–Myasnikov](https://arxiv.org/abs/1103.1295) · [ACC-P000027](https://competition.sair.foundation/contributor-network/acc/ACC-P000027)
+
+Lean 4.29.1 verifies the two-multiplication path at $L=1$, a $4L$-multiplication ordinary path for every $L$, and equality at every metabelian marking. The corresponding declarations are `first_witness`, `family_witness` and `family_eval_metabelian` in the namespace `AC.MetabelianProbe`. For the sharper $2L+2$ bound, the Python checker verifies the six bases and the induction identity, checks the masks through $L=128$, and replays their ordinary paths through $L=19$. The stable lower bounds and common-law equivalence are proved above.
+
+Kimi K3.1 Pro and six Ultramath reviewers on Open Math OS reviewed the investigation. Codex assisted with the proofs, the batched $2L+2$ construction, the Lean certificates and the Python checker.

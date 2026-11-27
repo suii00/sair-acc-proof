@@ -14,8 +14,12 @@ import ACProof.AK2ConjExact
 import ACProof.MSStarThree
 import ACProof.MSStarRotation
 import ACProof.CyclicRelatorRecovery
+import ACProof.MetabelianFamily
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
+#print axioms AC.MetabelianProbe.first_witness
+#print axioms AC.MetabelianProbe.family_witness
+#print axioms AC.MetabelianProbe.family_eval_metabelian
 #print axioms AC.msStarOneRotated_witness
 #print axioms AC.msStarOneRotated_exact
 #print axioms AC.CyclicRelator.undoRotation

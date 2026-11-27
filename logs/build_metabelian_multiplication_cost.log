@@ -1,0 +1,43 @@
+Common group laws and Andrews–Curtis multiplication cost
+Release verification
+Start (UTC)  2026-11-27T08:55:58+00:00
+End (UTC)    2026-11-27T08:58:48+00:00
+
+Official source commit  a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e
+Official AC.lean SHA-256  927ba318d26b06c312140117b2a4856373832ed2c043944f520ec7337bcfca1b
+Resolved Lake manifest SHA-256  c4d663bed06082fcb83a06bd5baffe00fef5fa6eff2c058e4ef5f938f232f413
+Toolchain  leanprover/lean4:v4.29.1
+Lean (version 4.29.1, arm64-apple-darwin24.6.0, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)
+Lake version 5.0.0-src+f72c35b (Lean version 4.29.1)
+Mathlib  5e932f97dd25535344f80f9dd8da3aab83df0fe6
+All 9 local dependency checkouts match their locked revisions.
+A fresh project build directory contained AC.lean and 44 ACProof modules.
+Upstream Lake settings and the ACProof library stanza match scripts/reproduce.sh.
+The dependency cache was reused. AC.lean and all ACProof modules were compiled from source.
+Source scan for sorry/admit placeholders  0
+
+$ lake build AC ACProof
+Build completed successfully (8294 jobs).
+
+$ lake env lean -DautoImplicit=false -DwarningAsError=true ACProof/Check.lean
+152 audited declarations, 0 with nonstandard axioms.
+'AC.MetabelianProbe.first_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MetabelianProbe.family_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AC.MetabelianProbe.family_eval_metabelian' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ python3 -B research/finite-probe-cost/check.py
+Six-step descent and cyclic formula hold for 1 <= L <= 128.
+Q_1 reaches (x,y) with exactly two positive right multiplications.
+Second-derived law: 20-step descent and score L through L=128.
+Four right multiplications remove each second-derived block for L=1..128.
+Batched deletion uses 2L+2 signed conjugates of x; all six base cases and L=1..128 pass.
+The paths reconstructed from the masks reach the ordered basis for L=1..19.
+Second-derived law holds on all 36 ordered markings of S3.
+Second-derived law holds on all 64 ordered markings of D8.
+Raw/cyclic defect maxima on 2809 word pairs: 1/2.
+Stabilization, conjugation by a fresh generator, and rank-3 norm checks pass.
+S3: distance zero on all 36 markings at L=6.
+S4: distance zero on all 576 markings at L=12.
+All permutation degrees <= 6: L=60, elementary lower bound on P_L 7, defect-one lower bound on both families 9.
+All permutation degrees <= 10: L=2520, elementary lower bound on P_L 15, defect-one lower bound on both families 16.
+All permutation degrees <= 20: L=232792560, elementary lower bound on P_L 39, defect-one lower bound on both families 40.
