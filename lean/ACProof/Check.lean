@@ -11,8 +11,17 @@ import ACProof.EuclideanWitness
 import ACProof.AKProjective
 import ACProof.AK1Distance
 import ACProof.AK2ConjExact
+import ACProof.MSStarThree
 
 /-! Axiom audit for every submission theorem (see README, theorem table). -/
+#print axioms AC.MSStarCertificate.odd_lower
+#print axioms AC.MSStar_zero_witness
+#print axioms AC.MSStar_one_witness
+#print axioms AC.MSStarThree.bounds
+#print axioms AC.MSStarThree.lower
+#print axioms AC.MSStarThree.zero_lower
+#print axioms AC.MSStar_zero_conjCount_exact
+#print axioms AC.MSStar_one_conjCount_exact
 #print axioms AC.ComplementaryInvolutions.lower
 #print axioms AC.AK_three_conjugations
 #print axioms AC.AK_length_add_seven

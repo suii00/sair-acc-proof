@@ -4,6 +4,20 @@ Lean 4 formalization of AC paths for Miller–Schupp presentations and lower bou
 checked against the **unmodified** official statement `AC.lean` of
 [SAIRcompetition/Andrews-Curtis](https://github.com/SAIRcompetition/Andrews-Curtis) @ `a0fd6e6f52d82c93ccc06ab91d81e8fa3678256e`.
 
+## Conjugation counts in the Miller–Schupp w-star family
+
+For $w_\star=y^{-1}xyx^{-1}$ and every $n\geq1$, an ordinary ordered trivialization of $\mathrm{MS}(n,w_\star)$ requires at least three arbitrary-word conjugations. An explicit path uses $2^n+1$. At $n=1$ the minimum is exactly three, attained in ten moves, the shortest length at that conjugation count. At $n=2$ the minimum is five under the smallest possible peak total word length, 12. [Manuscript and ledger](submission/description_ms_wstar.md) · [Lean proofs](lean/ACProof/MSStarThree.lean) · [Lean witnesses](lean/ACProof/MSStarConjugations.lean) · [Build and axiom audit](logs/build_ms_wstar.log)
+
+Use Python 3.9 or later for the following checks. The last command rebuilds the formal statements against the pinned official Lean project.
+
+```sh
+python3 research/ms-wstar/lower_check.py
+python3 research/ms-wstar/witness_check.py
+python3 research/ms-wstar/length_check.py
+python3 research/ms-wstar/peak_check.py
+bash scripts/reproduce.sh
+```
+
 ## Exactly three conjugations for AK(2)
 
 The minimum number of arbitrary-word conjugations taking the ordered AK(2) relators to $(x,y)$ is three. Lean verifies the lower bound and two explicit paths. For every $n\ge2$, any such path for AK($n$) requires at least three conjugations and $n+7$ total moves. [Proof and move ledger](submission/description_ak2_three_conjugations.md) · [Lean witnesses](lean/ACProof/AK2ConjExact.lean) · [Uniform lower bounds](lean/ACProof/AKThreeConjugations.lean) · [Build and axiom audit](logs/build_ak2_three_conjugations.log)
